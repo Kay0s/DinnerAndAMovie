@@ -4,7 +4,7 @@
   "description": "A fullstack project brought to you by my teammates and I",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "tailwindcss build Develop/src/style.css -o public/style.css", 
     "start": "node server.js"
   },
   "repository": {
@@ -19,10 +19,13 @@
   },
   "homepage": "https://github.com/DaronSchmit/Project2#readme",
   "dependencies": {
+    "autoprefixer": "^10.2.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "passport": "^0.4.1",
+    "postcss": "^8.2.4",
+    "tailwindcss": "^2.0.2"
     "passport-local": "^1.0.0",
     "sequelize": "^6.3.5",
     "dotenv": "^8.2.0"
