@@ -1,7 +1,7 @@
 let db = require("../models");
 
 module.exports = (app) => {
-  app.get("/api/favorites", (req, res) => {
+  app.get("/api/movies", (req, res) => {
     db.Movie.findAll({
       include: [db.Recipe],
     }).then((dbMovie) => {
@@ -9,7 +9,7 @@ module.exports = (app) => {
     });
   });
 
-  app.get("/api/favorites/:id", (req, res) => {
+  app.get("/api/movies/:id", (req, res) => {
     db.Movie.findOne({
       where: {
         id: req.params.id,
@@ -20,13 +20,13 @@ module.exports = (app) => {
     });
   });
 
-  app.post("/api/favorites", (req, res) => {
+  app.post("/api/movies", (req, res) => {
     db.Movie.create(req.body).then((dbMovie) => {
       res.json(dbMovie);
     });
   });
 
-  app.delete("/api/favorites/:id", (req, res) => {
+  app.delete("/api/movies/:id", (req, res) => {
     db.Movie.destroy({
       where: {
         id: req.params.id,
