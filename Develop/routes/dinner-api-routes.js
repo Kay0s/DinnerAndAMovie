@@ -39,24 +39,25 @@ module.exports = (app) => {
       axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`)
     ])
       
-    // movieURL = baseURL+req.params.movie;
-    // dinnerURL = baseURL2+req.params.dinner;
+    //  movieURL = baseURL+req.params.movie;
+    //  dinnerURL = baseURL2+req.params.dinner;
 
-    // let obj = movieapicall;
-    // let otherobject = dinnerapicall;
+    //  let obj = movieapicall;
+    //  let otherobject = dinnerapicall;
 
-    // res.json([obj, otherobject]);
+    //  res.json([obj, otherobject]);
     .then((param) => { 
       param.render('pairings', {movieApi: movie_name, dinnerApi: dinner_name}) 
-    }if (userFavorite === "true")
-      )}.then((res) {
-      let Favorite = sequelize.define('Favorite', {
+    }
+      ).then((res) => {
+        if (userFavorite === "true")
+      } let Favorite = sequelize.define('Favorite', {
         movie_name: Sequelize.STRING,
         dinner_name: Sequelize.STRING,
       }, {
         tableName: 'favorites',
         timestamps: false
-      });
+      }));
       
       Favorites
         .create({
@@ -100,5 +101,5 @@ module.exports = (app) => {
     }).then((dbDinner) => {
       res.render("favorites", dbDinner);
     });
-  });
+  })};
 
