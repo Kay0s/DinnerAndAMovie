@@ -11,7 +11,7 @@ module.exports = (app) => {
     db.Dinner.findAll({
       include: [db.Dinner],
     }).then((dbDinner) => {
-      res.json(dbDinner);
+      res.render("favorites", dbDinner);
     });
   });
 
@@ -34,21 +34,22 @@ module.exports = (app) => {
   //    ;
      
   app.get("/api/:movies/:dinners", (req, res) => {
-    axios.get(`http://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`)
-    .then((res) =>
-    {
-      axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`);
-    })
-    movieURL = baseURL+req.params.movie;
-    dinnerURL = baseURL2+req.params.dinner;
+    axios.all([
+      axios.get(`https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`),
+      axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`)
+    ])
+      
+    // movieURL = baseURL+req.params.movie;
+    // dinnerURL = baseURL2+req.params.dinner;
 
-    let obj = movieapicall;
-    let otherobject = dinnerapicall;
+    // let obj = movieapicall;
+    // let otherobject = dinnerapicall;
 
-    res.json([obj, otherobject]);
-    )}.then((res.render('pairings', {movieApi: movie_name, dinnerApi: dinner_name})) =>  {
-      if (userFavorite === 1)
-    .then(res) {
+    // res.json([obj, otherobject]);
+    .then((param) => { 
+      param.render('pairings', {movieApi: movie_name, dinnerApi: dinner_name}) 
+    }if (userFavorite === "true")
+      )}.then((res) {
       let Favorite = sequelize.define('Favorite', {
         movie_name: Sequelize.STRING,
         dinner_name: Sequelize.STRING,
@@ -71,7 +72,7 @@ module.exports = (app) => {
            res.response("Pairing added to Favorites!")
           }
         })
-    }
+    })
 
 
   app.get("/api/dinners/:id", (req, res) => {
@@ -81,13 +82,13 @@ module.exports = (app) => {
       },
       include: [db.Movie],
     }).then((dbDinner) => {
-      res.json(dbDinner);
+      res.render("favorites", dbDinner);
     });
   });
 
   app.post("/api/dinners", (req, res) => {
     db.Dinner.create(req.body).then((dbDinner) => {
-      res.json(dbDinner);
+      res.render("favorites", dbDinner);
     });
   });
 
@@ -97,7 +98,7 @@ module.exports = (app) => {
         id: req.params.id,
       },
     }).then((dbDinner) => {
-      res.json(dbDinner);
+      res.render("favorites", dbDinner);
     });
   });
 

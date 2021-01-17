@@ -1,11 +1,15 @@
 let db = require("../models");
+const axios = require("axios");
+const { response } = require("express");
+const router = express.Router();
+let movie_api_key = process.env.MOVIE_API_KEY;
 
 module.exports = (app) => {
   app.get("/api/movies", (req, res) => {
     db.Movie.findAll({
-      include: [db.Recipe],
+      include: [db.Dinner],
     }).then((dbMovie) => {
-      res.json(dbMovie);
+      res.render("favorites", dbMovie);
     });
   });
 
@@ -14,15 +18,15 @@ module.exports = (app) => {
       where: {
         id: req.params.id,
       },
-      include: [db.Recipe],
+      include: [db.Dinner],
     }).then((dbMovie) => {
-      res.json(dbMovie);
+      res.render("favorites", dbMovie);
     });
   });
 
   app.post("/api/movies", (req, res) => {
     db.Movie.create(req.body).then((dbMovie) => {
-      res.json(dbMovie);
+      res.render("favorites", dbMovie);
     });
   });
 
@@ -32,7 +36,8 @@ module.exports = (app) => {
         id: req.params.id,
       },
     }).then((dbMovie) => {
-      res.json(dvMovie);
+      res.render("favorities", dbMovie);
     });
   });
 };
+module.exports = router;
