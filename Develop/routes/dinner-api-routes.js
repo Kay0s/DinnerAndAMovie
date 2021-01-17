@@ -33,7 +33,7 @@ module.exports = (app) => {
   //    });
   //    ;
      
-  app.get("/api/movies/dinners", (req, res) => {
+  app.get("/api/:movies/:dinners", (req, res) => {
     axios.get(`http://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`)
     .then((res) =>
     {
@@ -46,9 +46,32 @@ module.exports = (app) => {
     let otherobject = dinnerapicall;
 
     res.json([obj, otherobject]);
-    
-   )};
-
+    )}.then((res.render('pairings', {movieApi: movie_name, dinnerApi: dinner_name})) =>  {
+      if (userFavorite === 1)
+    .then(res) {
+      let Favorite = sequelize.define('Favorite', {
+        movie_name: Sequelize.STRING,
+        dinner_name: Sequelize.STRING,
+      }, {
+        tableName: 'favorites',
+        timestamps: false
+      });
+      
+      Favorites
+        .create({
+          movie_name: movie_name,
+          dinner_name: dinner_name
+        
+        })
+        .complete((err, favorite) => {
+          if (err) {
+           console.log(err);
+           res.response("Error adding pairing to Favorites")
+          } else {
+           res.response("Pairing added to Favorites!")
+          }
+        })
+    }
 
 
   app.get("/api/dinners/:id", (req, res) => {
@@ -77,4 +100,4 @@ module.exports = (app) => {
       res.json(dbDinner);
     });
   });
-  
+
