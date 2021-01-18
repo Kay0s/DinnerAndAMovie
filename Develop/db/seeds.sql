@@ -1,0 +1,1 @@
+INSERT INTO history (dinnerSearchTerm, movieSearchTerm, likes) VALUES ("The Dark Knight", "")
