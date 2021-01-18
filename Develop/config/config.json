@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "vegetable",
-    "database": "users_development",
+    "database": "dinnerandamovie",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
