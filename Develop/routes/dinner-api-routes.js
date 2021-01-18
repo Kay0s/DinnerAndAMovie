@@ -5,7 +5,6 @@ const router = express.Router();
 let food_api_key = process.env.FOOD_API_KEY;
 let movie_api_key = process.env.MOVIE_API_KEY;
 
-
 module.exports = (app) => {
   app.get("/api/dinners", (req, res) => {
     db.Dinner.findAll({
@@ -15,7 +14,6 @@ module.exports = (app) => {
     });
   });
 
- 
   // router.get("/api/dinners", (req, res, next)  => {
   //   axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`);
   //   .then((response) => {
@@ -32,49 +30,25 @@ module.exports = (app) => {
   //     console.log(err);
   //    });
   //    ;
-     
+
   app.get("/api/:movies/:dinners", (req, res) => {
-    axios.all([
-      axios.get(`https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`),
-      axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`)
-    ])
-      
-    //  movieURL = baseURL+req.params.movie;
-    //  dinnerURL = baseURL2+req.params.dinner;
+    axios
+      .all([
+        axios.get(`https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`),
+        axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`),
+      ])
 
-    //  let obj = movieapicall;
-    //  let otherobject = dinnerapicall;
+      //  movieURL = baseURL+req.params.movie;
+      //  dinnerURL = baseURL2+req.params.dinner;
 
-    //  res.json([obj, otherobject]);
-    .then((param) => { 
-      param.render('pairings', {movieApi: movie_name, dinnerApi: dinner_name}) 
-    }
-      ).then((res) => {
-        if (userFavorite === "true")
-      } let Favorite = sequelize.define('Favorite', {
-        movie_name: Sequelize.STRING,
-        dinner_name: Sequelize.STRING,
-      }, {
-        tableName: 'favorites',
-        timestamps: false
-      }));
-      
-      Favorites
-        .create({
-          movie_name: movie_name,
-          dinner_name: dinner_name
-        
-        })
-        .complete((err, favorite) => {
-          if (err) {
-           console.log(err);
-           res.response("Error adding pairing to Favorites")
-          } else {
-           res.response("Pairing added to Favorites!")
-          }
-        })
-    })
+      //  let obj = movieapicall;
+      //  let otherobject = dinnerapicall;
 
+      //  res.json([obj, otherobject]);
+      .then((param) => {
+        param.render("pairings", { movieApi: movie_name, dinnerApi: dinner_name });
+      });
+  });
 
   app.get("/api/dinners/:id", (req, res) => {
     db.Dinner.findOne({
@@ -101,5 +75,5 @@ module.exports = (app) => {
     }).then((dbDinner) => {
       res.render("favorites", dbDinner);
     });
-  })};
-
+  });
+};
