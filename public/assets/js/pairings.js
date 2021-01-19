@@ -39,51 +39,51 @@ $(function () {
   });
 });
 
-// $(".change-pairingsSearched").on("click", (event) => {
-//   let id = $(this).data("id");
-//   let newPairingsSearched = $(this).data("newPairingsSearched");
+$(".change-pairingsSearched").on("click", (event) => {
+  let id = $(this).data("id");
+  let newPairingsSearched = $(this).data("newPairingsSearched");
 
-//   let newPairingsSearchedState = {
-//     favorited: newFavorite,
-//   };
-// } let Favorite = sequelize.define('Favorite', {
-//   movie_name: Sequelize.STRING,
-//   dinner_name: Sequelize.STRING,
-// }, {
-//   tableName: 'favorites',
-//   timestamps: false
-// }));
+  let newPairingsSearchedState = {
+    favorited: newFavorite,
+  };
+} let Favorite = sequelize.define('Favorite', {
+  movie_name: Sequelize.STRING,
+  dinner_name: Sequelize.STRING,
+}, {
+  tableName: 'favorites',
+  timestamps: false
+}));
 
-// Favorites
-//   .create({
-//     movie_name: movie_name,
-//     dinner_name: dinner_name
+Favorites
+  .create({
+    movie_name: movie_name,
+    dinner_name: dinner_name
 
-//   })
-//   .complete((err, favorite) => {
-//     if (err) {
-//      console.log(err);
-//      res.response("Error adding pairing to Favorites")
-//     } else {
-//      res.response("Pairing added to Favorites!")
-//     }
-//   })
+  })
+  .complete((err, favorite) => {
+    if (err) {
+     console.log(err);
+     res.response("Error adding pairing to Favorites")
+    } else {
+     res.response("Pairing added to Favorites!")
+    }
+  })
 
-// app.get("/api/:movies/:dinners", (req, res) => {
-//   axios
-//     .all([
-//       axios.get(`https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`),
-//       axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`),
-//     ])
+app.get("/api/:movies/:dinners", (req, res) => {
+  axios
+    .all([
+      axios.get(`https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`),
+      axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`),
+    ])
 
-//     //  movieURL = baseURL+req.params.movie;
-//     //  dinnerURL = baseURL2+req.params.dinner;
+     movieURL = baseURL+req.params.movie;
+     dinnerURL = baseURL2+req.params.dinner;
 
-//     //  let obj = movieapicall;
-//     //  let otherobject = dinnerapicall;
+     let obj = movieapicall;
+     let otherobject = dinnerapicall;
 
-//     //  res.json([obj, otherobject]);
-//     .then((param) => {
-//       param.render("pairings", { movieApi: movie_name, dinnerApi: dinner_name });
-//     });
-// });
+     res.json([obj, otherobject]);
+    .then((param) => {
+      param.render("pairings", { movieApi: movie_name, dinnerApi: dinner_name });
+    });
+});
