@@ -5,9 +5,7 @@ const router = express.Router();
 let movie_api_key = process.env.MOVIE_API_KEY;
 let food_api_key = process.env.FOOD_API_KEY;
 
-
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-
 
 $(function () {
   $(".change-pairingsSearched").on("click", (event) => {
@@ -41,7 +39,7 @@ $(function () {
     $.ajax("/api/:movies/:dinners", {
       type: "POST",
       data: newPairingsInputed,
-    }).then( () => {
+    }).then(() => {
       console.log("created new favorite");
       // Reload the page to get the updated list
       location.reload();
@@ -49,102 +47,97 @@ $(function () {
   });
 });
 
-$(".change-pairingsSearched").on("click", (event) => {
-  let id = $(this).data("id");
-  let newPairingsSearched = $(this).data("newPairingsSearched");
+// $(".change-pairingsSearched").on("click", (event) => {
+//   let id = $(this).data("id");
+//   let newPairingsSearched = $(this).data("newPairingsSearched");
 
-  let newPairingsSearchedState = {
-    favorited: newFavorite,
-  };
-} let Favorite = sequelize.define('Favorite', {
-  movie_name: Sequelize.STRING,
-  dinner_name: Sequelize.STRING,
-}, {
-  tableName: 'favorites',
-  timestamps: false
-}));
+//   let newPairingsSearchedState = {
+//     favorited: newFavorite,
+//   };
+// } let Favorite = sequelize.define('Favorite', {
+//   movie_name: Sequelize.STRING,
+//   dinner_name: Sequelize.STRING,
+// }, {
+//   tableName: 'favorites',
+//   timestamps: false
+// }));
 
+// $('#button').click(() => {
+//   $.when(
+//       $.ajax({
+//           url: `https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`,
+//           success: (data) => {
+//               alert('request complete')
+//           }
+//       }),
+//       $.ajax({
+//           url: `https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`,
+//           success: (data) => {
+//               alert('request complete')
+//           }
+//       })
+//   ).then( () => {
+//       alert('all complete');
+//   });
+// });
 
-$('#button').click(() => {
-  $.when(
-      $.ajax({
-          url: `https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`,
-          success: (data) => {
-              alert('request complete')
-          }
-      }),
-      $.ajax({
-          url: `https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`,
-          success: (data) => {
-              alert('request complete')
-          }
-      })
-  ).then( () => {
-      alert('all complete');
-  });
-});
+// $('#favorites').click(() => {
+// Favorites
+//   .create({
+//     movie_name: movie_name,
+//     dinner_name: dinner_name
 
+//   })
+//   .complete((err, favorite) => {
+//     if (err) {
+//      console.log(err);
+//      res.response("Error adding pairing to Favorites")
+//     } else {
+//      res.response("Pairing added to Favorites!")
+//     }
+//   })
 
-$('#favorites').click(() => {
-Favorites
-  .create({
-    movie_name: movie_name,
-    dinner_name: dinner_name
+// app.get("/api/:movies/:dinners", (req, res) => {
+//   axios
+//     .all([
+//       axios.get(`https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`),
+//       axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`),
+//     ])
 
-  })
-  .complete((err, favorite) => {
-    if (err) {
-     console.log(err);
-     res.response("Error adding pairing to Favorites")
-    } else {
-     res.response("Pairing added to Favorites!")
-    }
-  })
+//      movieURL = baseURL+req.params.movie;
+//      dinnerURL = baseURL2+req.params.dinner;
 
-app.get("/api/:movies/:dinners", (req, res) => {
-  axios
-    .all([
-      axios.get(`https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`),
-      axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`),
-    ])
+//      let obj = movieapicall;
+//      let otherobject = dinnerapicall;
 
-     movieURL = baseURL+req.params.movie;
-     dinnerURL = baseURL2+req.params.dinner;
+//      res.json([obj, otherobject]);
+//     .then((param) => {
+//       param.render("pairings", { movieApi: movie_name, dinnerApi: dinner_name });
+//     });
+// });
 
-     let obj = movieapicall;
-     let otherobject = dinnerapicall;
-
-     res.json([obj, otherobject]);
-    .then((param) => {
-      param.render("pairings", { movieApi: movie_name, dinnerApi: dinner_name });
-    });
-});
-
-
-$('#button').click(() => {
-  $.when(
-      $.ajax({
-          url: `https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`,
-          success: (data) => {
-              alert('request complete')
-          }
-      }),
-      $.ajax({
-          url: `https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`,
-          success: (data) => {
-              alert('request complete')
-          }
-      })
-  ).then( () => {
-      alert('all complete');
-  });
-
-render() {
-  return  (
-       <div>
-           <button onClick={this.click} disabled={this.state.isLoading}> Add to Favorites </button>
-           {this.state.data}
-       </div>
-      );
-  }})})
-
+// $('#button').click(() => {
+//   $.when(
+//       $.ajax({
+//           url: `https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`,
+//           success: (data) => {
+//               alert('request complete')
+//           }
+//       }),
+//       $.ajax({
+//           url: `https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`,
+//           success: (data) => {
+//               alert('request complete')
+//           }
+//       })
+//   ).then( () => {
+//       alert('all complete');
+//   }).then (render()) {
+//   return  (
+//        <div>
+//            <button onClick={this.click} disabled={this.state.isLoading}> Add to Favorites </button>
+//            {this.state.data}
+//        </div>
+//   )};
+// });
+// })
