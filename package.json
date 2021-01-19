@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "A fullstack project brought to you by my teammates and I",
   "main": "server.js",
-
   "scripts": {
-     "build-css": "tailwindcss build src/style.css",
-     "start": "node server.js",
+    "build-css": "tailwindcss build src/style.css",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,21 +24,23 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "eslinter": "^3.2.1",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
-
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.4.0"
   },
-    "DevDependencies": {
-      "eslint": "^7.18.0",
-      "eslint-config-airbnb-base": "^14.2.1",
-      "eslint-plugin-import": "^2.22.1",
-      "sequelize": "^6.4.0",
-      "travis": "^0.1.1"
-
-    }
+  "DevDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "sequelize": "^6.4.0",
+    "travis": "^0.1.1"
   }
+}
