@@ -1,4 +1,14 @@
+let db = require("../../models");
+const axios = require("axios");
+const { response } = require("express");
+const router = express.Router();
+let movie_api_key = process.env.MOVIE_API_KEY;
+let food_api_key = process.env.FOOD_API_KEY;
+
+
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
+
+
 $(function () {
   $(".change-pairingsSearched").on("click", (event) => {
     let id = $(this).data("id");
@@ -12,7 +22,7 @@ $(function () {
     $.ajax("/api/pairings" + id, {
       type: "PUT",
       data: newPairingsSearchedState,
-    }).then(function () {
+    }).then(() => {
       console.log("changed favorited to", newFavorite);
       // Reload the page to get the updated list
       location.reload();
@@ -31,7 +41,7 @@ $(function () {
     $.ajax("/api/:movies/:dinners", {
       type: "POST",
       data: newPairingsInputed,
-    }).then(function () {
+    }).then( () => {
       console.log("created new favorite");
       // Reload the page to get the updated list
       location.reload();
@@ -54,6 +64,28 @@ $(".change-pairingsSearched").on("click", (event) => {
   timestamps: false
 }));
 
+
+$('#button').click(() => {
+  $.when(
+      $.ajax({
+          url: `https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`,
+          success: (data) => {
+              alert('request complete')
+          }
+      }),
+      $.ajax({
+          url: `https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`,
+          success: (data) => {
+              alert('request complete')
+          }
+      })
+  ).then( () => {
+      alert('all complete');
+  });
+});
+
+
+$('#favorites').click(() => {
 Favorites
   .create({
     movie_name: movie_name,
@@ -87,3 +119,32 @@ app.get("/api/:movies/:dinners", (req, res) => {
       param.render("pairings", { movieApi: movie_name, dinnerApi: dinner_name });
     });
 });
+
+
+$('#button').click(() => {
+  $.when(
+      $.ajax({
+          url: `https://www.omdbapi.com/?apikey=${movie_api_key}&${movieInput}`,
+          success: (data) => {
+              alert('request complete')
+          }
+      }),
+      $.ajax({
+          url: `https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`,
+          success: (data) => {
+              alert('request complete')
+          }
+      })
+  ).then( () => {
+      alert('all complete');
+  });
+
+render() {
+  return  (
+       <div>
+           <button onClick={this.click} disabled={this.state.isLoading}> Add to Favorites </button>
+           {this.state.data}
+       </div>
+      );
+  }})})
+
