@@ -10,18 +10,18 @@ let food_api_key = process.env.FOOD_API_KEY;
 $(function () {
   $(".change-pairingsSearched").on("click", (event) => {
     let id = $(this).data("id");
-    let newPairingsSearched = $(this).data("newPairingsSearched");
+    let newFavoritesSearched = $(this).data("newPairingsSearched");
 
-    let newPairingsSearchedState = {
-      favorited: newFavorite,
+    let newFavoritesSearchedstate = {
+      favorited: newFavoritesSearched,
     };
 
     // Send the PUT request.
     $.ajax("/api/pairings" + id, {
       type: "PUT",
-      data: newPairingsSearchedState,
+      data: newFavoritesSearchedstate,
     }).then(() => {
-      console.log("changed favorited to", newFavorite);
+      console.log("changed favorited to", newFavoritesSearched);
       // Reload the page to get the updated list
       location.reload();
     });
