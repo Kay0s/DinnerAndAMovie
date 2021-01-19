@@ -1,9 +1,12 @@
 {
-  "name": "dinnerAndAMovie",
+  "name": "dinnerandamovie",
   "version": "1.0.0",
   "description": "A fullstack project brought to you by my teammates and I",
-  "main": "index.js",
+  "main": "server.js",
+
   "scripts": {
+     "build-css": "tailwindcss build src/style.css",
+     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +21,7 @@
   },
   "homepage": "https://github.com/DaronSchmit/DinnerAndAMovie#readme",
   "dependencies": {
+    "autoprefixer": "^10.2.1",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
@@ -27,8 +31,15 @@
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "sequelize": "^6.4.0",
-    "travis": "^0.1.1"
+    "passport-local": "^1.0.0"
+
+  },
+    "DevDependencies": {
+      "eslint": "^7.18.0",
+      "eslint-config-airbnb-base": "^14.2.1",
+      "eslint-plugin-import": "^2.22.1",
+      "sequelize": "^6.4.0",
+      "travis": "^0.1.1"
+
+    }
   }
-}
