@@ -25,8 +25,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our routes
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+// app.use(HTMLRoutes);
+app.use(require("./routes/"));
 
 console.log(process.env.OMDBAPIKEY);
 console.log(process.env.MEALDBAPIKEY);
@@ -37,3 +37,5 @@ db.sequelize.sync().then(() => {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT)
   );
 });
+
+module.exports = app;
