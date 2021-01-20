@@ -5,8 +5,6 @@ const session = require("express-session");
 const passport = require("./config/passport");
 require("dotenv").config();
 const axios = require("axios");
-const HTMLRoutes = require("./routes/htmlRoutes");
-const APIRoutes = require("./routes/apiRoutes");
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
@@ -31,9 +29,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our routes
-app.use(HTMLRoutes);
-app.use(APIRoutes);
-require("./routes/index.js")(app);
+// app.use(HTMLRoutes);
+app.use(require("./routes/"));
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
@@ -41,3 +38,5 @@ db.sequelize.sync().then(() => {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT)
   );
 });
+
+module.exports = app;

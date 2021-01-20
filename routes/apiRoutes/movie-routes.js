@@ -1,7 +1,6 @@
 let db = require("../../models");
 const axios = require("axios");
-const { response } = require("express");
-const router = express.Router();
+const router = require("express").Router();
 let movie_api_key = process.env.MOVIE_API_KEY;
 
 router.get("/All", (req, res) => {

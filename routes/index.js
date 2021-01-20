@@ -1,9 +1,5 @@
-const router = express.Router();
-
-const apiRoutes = require("./apiRoutes");
-const htmlRoutes = require("./htmlRoutes");
-
-router.use("/api", apiRoutes);
-router.use("/", htmlRoutes);
-
-module.router = router;
+let router = require("express").Router();
+router.use("/api/dinner", require("./apiRoutes/dinner-routes"));
+router.use("/api/movie", require("./apiRoutes/movie-routes"));
+router.use("/", require("./htmlRoutes/html-routes"));
+module.exports = router;

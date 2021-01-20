@@ -1,11 +1,13 @@
-let db = require("../models");
-const axios = require("axios");
-const { response } = require("express");
-const router = express.Router();
+let db = require("../../models/");
 let food_api_key = process.env.FOOD_API_KEY;
 let movie_api_key = process.env.MOVIE_API_KEY;
+let router = require("express").Router();
 
-app.get("/All", (req, res) => {
+router.get("/test", (req, res) => {
+  res.send("hi");
+});
+
+router.get("/All", (req, res) => {
   db.Dinner.findAll({
     include: [db.Dinner],
   }).then((dbDinner) => {
@@ -30,7 +32,7 @@ app.get("/All", (req, res) => {
 //    });
 //    ;
 
-app.get("/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   db.Dinner.findOne({
     where: {
       id: req.params.id,
@@ -41,13 +43,13 @@ app.get("/:id", (req, res) => {
   });
 });
 
-app.post("/", (req, res) => {
+router.post("/", (req, res) => {
   db.Dinner.create(req.body).then((dbDinner) => {
     res.json(dbDinner);
   });
 });
 
-app.delete("/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
   db.Dinner.destroy({
     where: {
       id: req.params.id,
