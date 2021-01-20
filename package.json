@@ -1,12 +1,21 @@
 {
+<<<<<<< HEAD
+  "name": "project2",
+=======
   "name": "dinnerandamovie",
+>>>>>>> ac04fa1cb6117375797ab33f025d2d111541a93c
   "version": "1.0.0",
   "description": "A fullstack project brought to you by my teammates and I",
   "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
+    "build-css": "tailwindcss build source_file/style.css -o public/assets/css/style.css", 
+    "start": "node server.js"
+=======
     "build-css": "tailwindcss build src/style.css",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> ac04fa1cb6117375797ab33f025d2d111541a93c
   },
   "repository": {
     "type": "git",
@@ -33,6 +42,11 @@
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
+<<<<<<< HEAD
+    "postcss": "^8.2.4",
+    "tailwindcss": "^2.0.2",
+=======
+>>>>>>> ac04fa1cb6117375797ab33f025d2d111541a93c
     "passport-local": "^1.0.0",
     "sequelize": "^6.4.0"
   },
