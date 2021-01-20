@@ -28,9 +28,6 @@ app.set("view engine", "handlebars");
 // app.use(HTMLRoutes);
 app.use(require("./routes/"));
 
-console.log(process.env.OMDBAPIKEY);
-console.log(process.env.MEALDBAPIKEY);
-
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
   app.listen(PORT, () =>
