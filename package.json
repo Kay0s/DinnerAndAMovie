@@ -4,7 +4,7 @@
   "description": "A fullstack project brought to you by my teammates and I",
   "main": "server.js",
   "scripts": {
-    "build-css": "tailwindcss build source_file/style.css -o public/assets/css/style.css", 
+    "build-css": "tailwindcss build source_file/style.css -o public/assets/css/style.css",
     "start": "node server.js"
   },
   "repository": {
