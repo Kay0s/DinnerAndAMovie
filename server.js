@@ -1,8 +1,8 @@
 // Requiring necessary npm packages
 const express = require("express");
-const session = require("express-session");
-// Requiring passport as we've configured it
-const passport = require("./config/passport");
+// const session = require("express-session");
+// // Requiring passport as we've configured it
+// const passport = require("./config/passport");
 require("dotenv").config();
 const axios = require("axios");
 
@@ -16,10 +16,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-// We need to use sessions to keep track of our user's login status
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Set Handlebars.
 
@@ -31,6 +27,9 @@ app.set("view engine", "handlebars");
 // Requiring our routes
 // app.use(HTMLRoutes);
 app.use(require("./routes/"));
+
+console.log(process.env.OMDBAPIKEY);
+console.log(process.env.MEALDBAPIKEY);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
