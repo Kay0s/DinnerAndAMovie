@@ -26,41 +26,48 @@
 //   return User;
 // };
 
-//using bcrypt for password hashing
-const bcrypt = require("bcryptjs");
-//exporting Movie object
+// //exporting Movie object
+// module.exports = (sequelize, DataTypes) => {
+//   let Dinner = sequelize.define(
+//     "Dinner",
+//     {
+//       //Dinner
+//       dinnerSearchTerm: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//         validate: {
+//           len: [1, 50],
+//         },
+//       },
+//       likes: {
+//         type: DataTypes.INTEGER,
+//         defaultValue: 0,
+//       },
+//     },
+//     {
+//       freezeTableName: true,
+//     }
+//   );
+//   // Dinner.hasMany(Movie);
+//   // Dinner.belongsTo(Movie, {
+//   //   as: "Pairigns",
+//   //   foreignKey: "currentVersionId",
+//   //   constraints: false,
+//   // });
+//   return Dinner;
+// };
+
 module.exports = function (sequelize, DataTypes) {
-  let Dinner = sequelize.define(
-    "Dinner",
-    {
-      //Dinner
-      dinnerSearchTerm: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1, 50],
-        },
-      },
-      likes: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0,
-      },
-      created_at: {
-        type: TIMESTAMP,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-        allowNull: false,
-      },
-    },
-    {
-      freezeTableName: true,
-    }
-  );
-  Dinner.associate = (models) => {
-    dinner.hasOne(models.Movie, {
-      foreignKey: "id",
-      as: "dinnerAndMoviePairingID",
+  let Movie = sequelize.define("Movie", {
+    //
+    name: DataTypes.STRING,
+  });
+
+  Movie.associate = function (models) {
+    Movie.hasMany(models.Dinner, {
       onDelete: "cascade",
     });
   };
-  return Dinner;
+
+  return Movie;
 };
