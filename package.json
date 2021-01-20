@@ -4,7 +4,7 @@
   "description": "A fullstack project brought to you by my teammates and I",
   "main": "server.js",
   "scripts": {
-    "build-css": "tailwindcss build Develop/src/style.css -o public/style.css", 
+    "build-css": "tailwindcss build source_file/style.css -o public/assets/css/style.css", 
     "start": "node server.js"
   },
   "repository": {
@@ -26,7 +26,7 @@
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
     "postcss": "^8.2.4",
-    "tailwindcss": "^2.0.2"
+    "tailwindcss": "^2.0.2",
     "passport-local": "^1.0.0",
     "sequelize": "^6.3.5",
     "dotenv": "^8.2.0"

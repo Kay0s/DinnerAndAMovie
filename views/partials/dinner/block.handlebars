@@ -1,16 +1,15 @@
 <li>
-	{{dinner_movie}} 
+	{{movie_name}} 
     {{#if favorited}} 
 
-	<button class="btn btn change-pairingSearched" data-id="{{this.id}}" data-newFavorite="{{this.favorited}}">
+	<button class="btn btn change-pairingsSearched" data-id="{{this.id}}" data-newFavoritesSearched="{{this.PairingsSearched}}">
 
 
 	</button>
     {{/if}}
 	 
-	<div class="btn btn-success delete-favorite" data-id="{{this.id}}">Delete Fav Movies/Dinner</div>
-      
+	<div class="btn btn-success delete-favorite" data-id="{{this.id}}">Delete Favorites</div>
+
 
 
 </li>
-{{!-- change-devoured --}}

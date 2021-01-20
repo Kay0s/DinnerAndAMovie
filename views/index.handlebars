@@ -2,80 +2,43 @@
 <h1 class= "font-bold text-3xl "> For Your Entertaiment Tonight!</h1>
 <div class="row"> 
 <div class = "grid gap-4 grid-cols-2"> 
-      {{!-- <h3>Add delicious Burgers</h3> --}}
+     <h3>Enter Movie Name</h3> 
 
- 
+     <br> {{! need to add margins}}
 
+  <label class="block">
+  <span class="text-gray-700">Enter Your Favorite Movie</span>
+  <input type="email" class="form-input mt-1 block w-full" id= "npi" placeholder="Enter Movie Name">
+</label>
+<button class="transform hover:scale-110 motion-reduce:transform-none ...">
+  Submit Movie
+</button>
 
-
-
-
-
-
-
-
-
-
-
+       {{#each movies}}
+          {{#unless PairingsSearched}}
+          {{> movies/block PairingsSearched=true}}
+          {{/unless}}
+          {{/each}}
 </div>
 </div>
-</div>
-<div class="container content">
-  <div class='austin-powrs'><img src="https://media.giphy.com/media/8kejjglzkEprO/giphy.gif" /></div>
-
-  <h1>Get In My Be-llY!!</h1> 
-
-  <br>
-
-  <div class="row">
-    <div class="col-lg-12 bg-warning text-center">
-      <h3>Add delicious Burgers</h3>
-      <form class="create-form">
-
-        <div class="form-group">
-          <label for="bur">Burgers Name:</label>
-          <input type="text" class="form-group col-md-2" id="bur" name="burger_name"">
-            {{!-- <input type="text" id="bur" name="burger_name"> --}}
-          </div>
-
-          <button class=" submit btn btn-outline-green">Add Burgers</button>
-      </form>
-    </div>
-  </div>
-
-  <div class="container m-3 p-3">
-    <div class="row">
-      <div class="col-md-6">
-        <h2> Devour those Bur-Gers</h2>
-        <div class="=content-burger">
+<div class="container mx-auto px-4"> 
+    <div class="grid grid-cols-1" >
+      <li class="bg-white rounded-lg shadow-xl"></li>
+        {{!-- <h2>  </h2>  --}}
+        <div class="=content-dinner">
           {{!-- <ul> --}}
-          {{#each burgers}}
-          {{#unless devoured}}
-          {{> burgers/burger-block devoured=true}}
+          {{#each movies}}
+          {{#unless PairingsSearched}}
+          {{> movies/block PairingsSearched=false}}
           {{/unless}}
           {{/each}}
         </div>
         {{!-- </ul> --}}
       </div>
-
-      <div class="col-md-6">
-        <h2> Burgers that are Dev-oured</h2>
-
-        {{!-- <ul> --}}
-        {{#each burgers}}
-        {{#if devoured}}
-        {{> burgers/burger-block devoured=false}}
-        {{/if}}
-        {{/each}}
-        {{!-- </ul> --}}
       </div>
-
-    </div>
-
-
-
-
-  </div>
 </div>
-</div>
+    
+   
+
+
 
