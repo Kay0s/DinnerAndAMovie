@@ -18,4 +18,16 @@ router.get("/favorites", function (req, res) {
   res.sendFile(path.join(__dirname, "../../public/favorites.html"));
 });
 
+
+// router.get("/", (req, res) => {
+//   burger.all(data => {
+//     const indexObj = {
+//       burgers: data
+//     };
+//     console.log(indexObj);
+//     res.render("index", indexObj);
+//   });
+// });
+
+
 module.exports = router;
