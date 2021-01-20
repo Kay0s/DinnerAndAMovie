@@ -1,0 +1,44 @@
+ <div class = "container content">
+<h1 class= "font-bold text-3xl "> For Your Entertaiment Tonight!</h1>
+<div class="row"> 
+<div class = "grid gap-4 grid-cols-2"> 
+     <h3>Enter Movie Name</h3> 
+
+     <br> {{! need to add margins}}
+
+  <label class="block">
+  <span class="text-gray-700">Enter Your Favorite Movie</span>
+  <input type="email" class="form-input mt-1 block w-full" id= "npi" placeholder="Enter Movie Name">
+</label>
+<button class="transform hover:scale-110 motion-reduce:transform-none ...">
+  Submit Movie
+</button>
+
+       {{#each movies}}
+          {{#unless PairingsSearched}}
+          {{> movies/block PairingsSearched=true}}
+          {{/unless}}
+          {{/each}}
+</div>
+</div>
+<div class="container mx-auto px-4"> 
+    <div class="grid grid-cols-1" >
+      <li class="bg-white rounded-lg shadow-xl"></li>
+        {{!-- <h2>  </h2>  --}}
+        <div class="=content-dinner">
+          {{!-- <ul> --}}
+          {{#each movies}}
+          {{#unless PairingsSearched}}
+          {{> movies/block PairingsSearched=false}}
+          {{/unless}}
+          {{/each}}
+        </div>
+        {{!-- </ul> --}}
+      </div>
+      </div>
+</div>
+    
+   
+
+
+
