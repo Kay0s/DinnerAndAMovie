@@ -5,7 +5,7 @@ $(function () {
       let newPairingsSearched = $(this).data("newPairingsSearched");
   
       let newPairingsSearchedState = {
-        favorited: newFavorite,
+        favorited: newPairingsSearched,
       };
   
       // Send the PUT request.
@@ -38,6 +38,13 @@ $(function () {
       });
     });
   });
+  // Function for handling what to render when a movie title isn't entered
+// function renderEmpty() {
+//   let alertDiv = $("<div>");
+//   alertDiv.addClass("alert alert-danger");
+//   alertDiv.text("You must type in a movie name before pressing the search button.");
+//   movieContainer.append(alertDiv);
+// }
   
   // $(".change-pairingsSearched").on("click", (event) => {
   //   let id = $(this).data("id");
