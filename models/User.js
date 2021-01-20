@@ -30,25 +30,31 @@
 const bcrypt = require("bcryptjs");
 //exporting Movie object
 module.exports = function (sequelize, DataTypes) {
-  let Dinner = sequelize.define("Dinner", {
-    //Dinner
-    dinnerSearchTerm: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 50],
+  let Dinner = sequelize.define(
+    "Dinner",
+    {
+      //Dinner
+      dinnerSearchTerm: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 50],
+        },
+      },
+      likes: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      created_at: {
+        type: TIMESTAMP,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        allowNull: false,
       },
     },
-    likes: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    created_at: {
-      type: TIMESTAMP,
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      allowNull: false,
-    },
-  });
+    {
+      freezeTableName: true,
+    }
+  );
   Dinner.associate = (models) => {
     dinner.hasMany(models.Movie, {
       foreignKey: "created_at",
