@@ -50,9 +50,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Movie.associate = (models) => {
-    Movie.hasMany(models.Dinner, {
-      foreignKey: "created_at",
-      as: "dinnerAndMoviePairing",
+    Movie.hasOne(models.Dinner, {
+      foreignKey: "id",
+      name: "dinnerAndMoviePairingID",
       onDelete: "cascade",
     });
   };
