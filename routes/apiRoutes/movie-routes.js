@@ -3,6 +3,7 @@ const axios = require("axios");
 const router = require("express").Router();
 let movie_api_key = process.env.MOVIE_API_KEY;
 
+//succesful Postman call http://localhost:8080/api/movie/All
 router.get("/All", (req, res) => {
   db.Movie.findAll({
     include: [db.Dinner],
@@ -11,6 +12,7 @@ router.get("/All", (req, res) => {
   });
 });
 
+//succesfull Postman call http://localhost:8080/api/movie/:
 router.get("/:id", (req, res) => {
   db.Movie.findOne({
     where: {
@@ -22,12 +24,14 @@ router.get("/:id", (req, res) => {
   });
 });
 
+//succesfull Postman call http://localhost:8080/api/movie/
 router.post("/", (req, res) => {
   db.Movie.create(req.body).then((dbMovie) => {
     res.json(dbMovie);
   });
 });
 
+//unsuccesfull Postman call http://localhost:8080/api/movie/:1
 router.delete("/:id", (req, res) => {
   db.Movie.destroy({
     where: {

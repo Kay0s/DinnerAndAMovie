@@ -3,7 +3,7 @@ let food_api_key = process.env.FOOD_API_KEY;
 let movie_api_key = process.env.MOVIE_API_KEY;
 let router = require("express").Router();
 
-//url.whatever/movie/All
+//unsuccesful Postman call http://localhost:8080/api/dinner/All
 router.get("/All", (req, res) => {
   db.Dinner.findAll({
     include: [db.Dinner],
@@ -28,7 +28,7 @@ router.get("/All", (req, res) => {
 //     console.log(err);
 //    });
 //    ;
-
+//unsucessful Postman call http://localhost:8080/api/dinner/:
 router.get("/:id", (req, res) => {
   db.Dinner.findOne({
     where: {
@@ -40,12 +40,14 @@ router.get("/:id", (req, res) => {
   });
 });
 
+//unsucessfull Postman call http://localhost:8080/api/dinner/:
 router.post("/", (req, res) => {
   db.Dinner.create(req.body).then((dbDinner) => {
     res.json(dbDinner);
   });
 });
 
+//unsucessfull Postamn call http://localhost:8080/api/dinner/:
 router.delete("/:id", (req, res) => {
   db.Dinner.destroy({
     where: {

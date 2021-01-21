@@ -2,10 +2,12 @@
 // router.use("/api/dinner", require("./apiRoutes/dinner-routes"));
 // router.use("/api/movie", require("./apiRoutes/movie-routes"));
 // router.use("/", require("./htmlRoutes/html-routes"));
-
 let express = require("express");
 let router = express.Router();
-// Dependencies
+
+router.use("/api/movie", require("./apiRoutes/movie-routes"));
+// router.use("/api/movie", require("./apiRoutes/movie-routes"));
+
 // =============================================================
 
 // let path = require("path");
