@@ -10,12 +10,12 @@ const router = require("express").Router();
 
 // index route loads view.html
 router.get("/", (req, res, next) => {
-  res.render("index")
+  res.render("index");
 });
 
 // favorites route loads favorites.html
 router.get("/favorites", function (req, res, next) {
-  res.render("favorites")
+  res.render("favorites");
 });
 
 module.exports = router;

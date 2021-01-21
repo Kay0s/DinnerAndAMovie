@@ -3,10 +3,7 @@ let food_api_key = process.env.FOOD_API_KEY;
 let movie_api_key = process.env.MOVIE_API_KEY;
 let router = require("express").Router();
 
-router.get("/test", (req, res) => {
-  res.send("hi");
-});
-
+//url.whatever/movie/All
 router.get("/All", (req, res) => {
   db.Dinner.findAll({
     include: [db.Dinner],
