@@ -1,12 +1,5 @@
-// Dependencies
-// =============================================================
-const router = require("express").Router();
-// let path = require("path");
-
-// Routes
-// =============================================================
-
-// Each of the below routes just handles the HTML page that the user gets sent to.
+let express = require("express");
+let router = express.Router();
 
 // index route loads view.html
 router.get("/", (req, res, next) => {

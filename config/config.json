@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "bor!cu@_PR33",
+    "password": "",
     "database": "dinnerandamovie",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "vegetable",
     "database": "users_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -16,7 +16,7 @@
   "production": {
     "use_env_variable": "JAWSDB_URL",
     "username": "root",
-    "password": null,
+    "password": "vegetable",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
