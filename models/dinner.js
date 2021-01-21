@@ -1,28 +1,37 @@
-module.exports = function(sequelize, DataTypes) {
-    let Dinner = sequelize.define("Dinner", {
-        strMEAL: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        },
-        likes: {
-          type: DataTypes.INTEGER,
-          defaultValue: 0
-        }
-      }
-    });
-  
-    Dinner.associate = function(models) {
-      // We're saying that a Dinner should belong to an Author
-      // A Dinner can't be created without an Author due to the foreign key constraint
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Dinner extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
       Dinner.belongsTo(models.Movie, {
         foreignKey: {
           allowNull: false
         }
       });
     };
-  
-    return Dinner;
   };
-  
+  Dinner.init({
+    mealSTR: DataTypes.STRING,
+    likes: DataTypes.INTEGER,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('NOW()')
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('NOW()')
+    }
+  }, {
+    sequelize,
+    modelName: 'Dinner',
+  });
+  return Dinner;
+};
