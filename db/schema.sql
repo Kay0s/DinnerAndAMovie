@@ -1,6 +1,6 @@
 -- Drops the dinnerandamovie if it exists currently --
 DROP DATABASE IF EXISTS dinnerandamovie;
--- Creates the dinnerandamovie database --
+-- Creates the "dinnerandamovie" database --
 CREATE DATABASE dinnerandamovie;
 
 -- Start MySQL command line tool and login: mysql -u root -p.
