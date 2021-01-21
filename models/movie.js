@@ -1,16 +1,34 @@
-module.exports = function(sequelize, DataTypes) {
-    const Movie = sequelize.define("Movie", {
-      // Giving the Movie model a title of type STRING
-      title: DataTypes.STRING
-    });
-  
-    Movie.associate = function(models) {
-      // Associating Movie with Posts
-      // When an Movie is deleted, also delete any associated Posts
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Movie extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
       Movie.hasMany(models.Dinner, {
         onDelete: "cascade"
       });
     };
-  
-    return Movie;
   };
+  Movie.init({
+    title: DataTypes.STRING,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('NOW()')
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('NOW()')
+    }
+  }, {
+    sequelize,
+    modelName: 'Movie',
+  });
+  return Movie;
+};
