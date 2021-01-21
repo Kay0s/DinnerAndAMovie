@@ -6,7 +6,7 @@ let express = require("express");
 let router = express.Router();
 
 router.use("/api/movie", require("./apiRoutes/movie-routes"));
-// router.use("/api/movie", require("./apiRoutes/movie-routes"));
+router.use("/api/dinner", require("./apiRoutes/dinner-routes"));
 
 // =============================================================
 

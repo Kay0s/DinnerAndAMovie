@@ -10,8 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Dinner.belongsTo(models.Movie, {
-        foreignKey: "movieId",
-        targetKey: "id",
+        foreignKey: "id",
       });
     }
   }
