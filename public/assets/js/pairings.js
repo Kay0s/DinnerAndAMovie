@@ -5,7 +5,7 @@ $(function () {
     let newPairingsSearched = $(this).data("newPairingsSearched");
 
     let newPairingsSearchedState = {
-      favorited: newFavorite,
+      favorited: newPairingsSearched,
     };
 
     // Send the PUT request.
