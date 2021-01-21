@@ -1,4 +1,4 @@
--- Drops the blogger if it exists currently --
+-- Drops the dinnerandamovie if it exists currently --
 DROP DATABASE IF EXISTS dinnerandamovie;
--- Creates the "blogger" database --
+-- Creates the "dinnerandamovie" database --
 CREATE DATABASE dinnerandamovie;
