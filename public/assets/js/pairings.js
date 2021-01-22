@@ -22,15 +22,17 @@ $(function () {
   $(".create-form").on("submit", (event) => {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
-
+    //Get Movie title
+    //if movie exists in db, don't write it
+    //else POST new movie
+      //then post new dinner with movie's id as MovieID attribute
     let newPairingsInputed = {
       movie_name: $("#npi").val().trim(),
     };
-
     // Send the POST request.
-    $.ajax("/api/:movies/:dinners", {
+    $.ajax("/api/movie/", {
       type: "POST",
-      data: newPairingsInputed,
+      data: newPairingsInputed, //movie title
     }).then(function () {
       console.log("created new favorite");
       // Reload the page to get the updated list
