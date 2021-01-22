@@ -1,5 +1,8 @@
+
+
 let movie_api_key = process.env.MOVIE_API_KEY;
 let dinner_api_key = process.env.DINNER_API_KEY;
+const axios = require('axios').default;
 
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function () {
@@ -35,7 +38,7 @@ $(function () {
       type: "POST",
       data: newPairingsInputed,
     }).then(() => {
-      console.log("created new favorite");
+/      console.log("created new favorite");
       // Reload the page to get the updated list
       location.reload();
     });
@@ -50,11 +53,11 @@ function renderEmpty() {
   movieContainer.append(alertDiv);
 }
 
-// $(".change-pairingsSearched").on("click", (event) => {
+// $(".change-liked").on("click", (event) => {
 //   let id = $(this).data("id");
-//   let newPairingsSearched = $(this).data("newPairingsSearched");
+//   let newLiked = $(this).data("newLiked");
 
-//   let newPairingsSearchedState = {
+//   let newLikedState = {
 //     favorited: newFavorite,
 //   };
 // } let Favorite = sequelize.define('Favorite', {
@@ -79,3 +82,71 @@ function renderEmpty() {
 //      res.response("Pairing added to Favorites!")
 //     }
 //   })
+
+
+// $("#search").on("click", () => {
+//   searchMovieGetMeal($("#movietitle").val());
+// })
+
+// function searchMovieGetMeal(movie){
+//   let movieObj;
+//   let mealObj;
+//   $.ajax({
+//       url: `http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`,
+//       method: 'GET'
+//   })
+//   .then( res => {
+//       movieObj = res;
+//       console.log(movieObj);
+//       $.ajax({
+//           url: `https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`,
+//           method: 'GET'
+//       })
+//       .then(res => {
+//           mealObj = res.meals[Math.floor(Math.random() * res.meals.length)]
+//           console.log(mealObj);
+//           renderMovie(movieObj);
+//           renderDinner(mealObj);
+//       });
+//   });
+// }
+
+// function renderMovie(movie){
+//   $("#movieInfo").append(`<p>${movie.Title}</p>`);
+// }
+
+// function renderDinner(dinner){
+//   $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+// }
+
+
+
+$("#search").on("click", () => {
+  searchMovieGetMeal($("#movietitle").val());
+})
+
+function searchMovieGetMeal(movie){
+  let movieObj;
+  let mealObj;
+ axios.all ([
+    axiox.get(`http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`),
+    axiox.get(`https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`), 
+  ])
+  .then( res => {
+      movieObj = res;
+      console.log(movieObj)
+      })
+      .then(res => {
+          mealObj = res.meals[Math.floor(Math.random() * res.meals.length)]
+          console.log(mealObj);
+          renderMovie(movieObj);
+          renderDinner(mealObj);
+      });
+    }
+function renderMovie(movie){
+  $("#movieInfo").append(`<p>${movie.Title}</p>`);
+}
+
+function renderDinner(dinner){
+  $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+}
