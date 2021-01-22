@@ -1,28 +1,37 @@
 module.exports = function(sequelize, DataTypes) {
-    let Dinner = sequelize.define("Dinner", {
-        strMEAL: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        },
-        likes: {
-          type: DataTypes.INTEGER,
-          defaultValue: 0
-        }
+  let Dinner = sequelize.define("Dinner", {
+    mealSTR: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
       }
+    },
+    likes: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('NOW()')
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('NOW()')
+    }
+  });
+
+  Dinner.associate = function(models) {
+    // A Dinner belongs to movies
+    // A Dinner can't be 
+    Dinner.belongsTo(models.Movie, {
+      foreignKey: {
+        allowNull: false
+      },
+      constraints: false
     });
-  
-    Dinner.associate = function(models) {
-      // We're saying that a Dinner should belong to an Author
-      // A Dinner can't be created without an Author due to the foreign key constraint
-      Dinner.belongsTo(models.Movie, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
-  
-    return Dinner;
   };
-  
+
+  return Dinner;
+};

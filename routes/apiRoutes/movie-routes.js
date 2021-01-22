@@ -8,7 +8,7 @@ router.get("/All", (req, res) => {
     include: [db.Dinner],
   }).then((dbMovie) => {
     res.json(dbMovie);
-  });
+  }); //url.whatever/api/movie/All
 });
 
 router.get("/:id", (req, res) => {
@@ -20,7 +20,7 @@ router.get("/:id", (req, res) => {
   }).then((dbMovie) => {
     res.json(dbMovie);
   });
-});
+}); //url.whatever/api/movie/someidnumber
 
 router.post("/", (req, res) => {
   db.Movie.create(req.body).then((dbMovie) => {
@@ -36,6 +36,7 @@ router.delete("/:id", (req, res) => {
   }).then((dbMovie) => {
     res.json(dbMovie);
   });
-});
+}); //currently throws an error for movies with associated dinners, but works for movies without dinners
+
 
 module.exports = router;
