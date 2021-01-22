@@ -5,7 +5,7 @@ $(function () {
     let newPairingsSearched = $(this).data("newPairingsSearched");
 
     let newPairingsSearchedState = {
-      favorited: newFavorite,
+      favorited: newPairingsSearched,
     };
 
     // Send the PUT request.
@@ -27,7 +27,7 @@ $(function () {
     //else POST new movie
       //then post new dinner with movie's id as MovieID attribute
     let newPairingsInputed = {
-      name: $("#npi").val().trim(),
+      movie_name: $("#npi").val().trim(),
     };
     // Send the POST request.
     $.ajax("/api/movie/", {

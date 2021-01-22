@@ -1,45 +1,65 @@
- <div class = "container content">
-<h1 class= "font-bold text-3xl "> For Your Entertaiment Tonight!</h1>
-<div class="row"> 
-<div class = "grid gap-4 grid-cols-1"> 
-     <h3>Enter Movie Name</h3> 
-<div class = "create-form"> 
-     <br> {{! need to add margins but using tailwinds css}}
+<div class ="container com-3 p-3"> 
 
-  <label class="block">
-  <span class="text-gray-700">Enter Your Favorite Movie</span>
-  <input type="text" class="form-input mt-1 block w-full" id="npi" name="name">
-</label>
-{{!-- <button class="transform hover:scale-110 motion-reduce:transform-none ...">
-  Submit Movie
-</button>
+   <h1 class= "font-bold text-4xl text-center mt-9 "> For Your Entertaiment Tonight!</h1>
 
-          {{#each name}}
-          {{#unless Movie}}
+    <h3 class ="text-center mt-40" >Enter Movie Name</h3> 
+
+
+  <form action="" class="md:w-1/2 mx-auto">
+
+    <div class="shadow-md">
+      <div class="flex items-center bg-purple-400 rounded-t-lg border-b border-purple-500">
+        <input type="text" id="npi" name="movie_name" placeholder="" class="flex-1 p-4 pl-0 bg-transparent placeholder-purple-300 outline-none text-white">
+      </div>
+    </div>
+
+    <button class="block md-full rounded bg-blue-400 py-3 text-white font-bold shadow mt-8 flex space-y-6">Submit</button>
+
+  </form>
+
+          {{#each movies}}
+          {{#unless pairingsSearched}}
           {{> movies/movies-block newPairingsSearched=true}}
           {{/unless}}
           {{/each}}
-         
+
+
+</div>
+
+     <br> {{! need to add margins but using tailwinds css}}
+
+  {{!<label class="block">}}
+  {{!<span class="text-gray-700">Enter Your Favorite Movie</span>}}
+ {{! <input type="text" class="form-input mt-1 block w-full" id="npi" name="movie_name">}}
+{{!</label>}}
+
+          
+ 
 {{!#unless movies}}
 {{!<h3 class="warning">WARNING: This entry does not have a movie!</h3>
 {{/unless}}
+
+{{!-- </div> --}}
+
 </div>
-</div>
-</div>
-</div>
-<div class="container mx-auto px-4"> 
-    <div class="grid grid-cols-1" >
-      <li class="bg-white rounded-lg shadow-xl"></li>
+<div class="grid gap-4 grid-cols-2 "> 
+  <div class= "bg-orange-500"> 
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  </div>
+
+
         {{!-- <h2> Details of movie </h2>  --}}
-        <div class="=content-movies">
+       
           {{!-- <ul> --}}
-          {{#each name}}
-          {{#if Movie}}
+          {{#each movies}}
+          {{#if newpairingsSearched}}
           {{> movies/movies-block newPairingsSearched=false}}
           {{/if}}
           {{/each}}
-        </div>
+        </div> 
         {{!-- </ul> --}}
-      </div>
-      </div>
-</div>
+     </div>
+      
+    

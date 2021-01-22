@@ -1,7 +1,7 @@
 // Dependencies
 // =============================================================
 const router = require("express").Router();
-// let path = require("path");
+ let path = require("path");
 
 // Routes
 // =============================================================
