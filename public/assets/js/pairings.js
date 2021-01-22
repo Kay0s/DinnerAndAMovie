@@ -118,33 +118,38 @@ function renderEmpty() {
 //   $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
 // }
 
-$("#npi").on("click", () => {
+$("#npi").on("click", (event) => {
   searchMovieGetMeal($("#movie_name").val());
+  event.preventDefault();
 });
 
 function searchMovieGetMeal(movie) {
-  let movieObj;
-  let mealObj;
-  axios
-    .all([
-      axiox.get(`http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`),
-      axiox.get(`https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`),
-    ])
-    .then((res) => {
-      movieObj = res;
-      console.log(movieObj);
-    })
-    .then((res) => {
-      mealObj = res.meals[Math.floor(Math.random() * res.meals.length)];
-      console.log(mealObj);
-      renderMovie(movieObj);
-      renderDinner(mealObj);
-    });
-}
-function renderMovie(movie) {
-  $("#movieInfo").append(`<p>${movie.Title}</p>`);
-}
+  let one = `http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`;
+  let two = `https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`;
+  const requestOne = axios.get(one);
+  const requestTwo = axios.get(two);
 
-function renderDinner(dinner) {
-  $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+  axios
+    .all([requestOne, requestTwo])
+    .then(
+      axios.spread((...responses) => {
+        const responseOne = responses[0];
+        const responseTwo = responses[1];
+
+        // use/access the results
+        renderMovie(reponseOne);
+        function renderMovie(responseOne) {
+          $("#movieInfo").append(`<p>${movie.Title}</p>`);
+        }
+
+        function renderDinner(responseTwo) {
+          mealObj = res.meals[Math.floor(Math.random() * res.meals.length)];
+          $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+        }
+      })
+    )
+    .catch((errors) => {
+      // react on errors.
+      return res.status(404).end();
+    });
 }
