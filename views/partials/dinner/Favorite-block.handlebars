@@ -1,0 +1,32 @@
+<li>
+	{{}}
+
+	<button class=".delete-favorite" data-id="{{this.id}}" data-newsleep="{{sleep}}">
+		{{#if sleep}}SLEEP TIME!{{else}}WAKE UP!{{/if}}
+	</button>
+
+	{{!-- <button class="delete-cat" data-id="{{this.id}}">DELETE!</button> --}}
+</li>
+
+<Script>
+function SetHistory(textItem) {
+  let newListItem = $("<li>");
+  newListItem.attr("id", idNumber);
+  newListItem.attr("class", "historyListItems");
+  newListItem.append(textItem);
+  newListItem.on("click", function () {
+    getHistory(textItem);
+  });
+  $("#history-items").prepend(newListItem);
+  idNumber++;
+}
+
+function getHistory(textItem) {
+  googleApi(textItem);
+  dictionaryAPI(textItem);
+  giphyAPI(textItem);
+}
+
+</Script>
+
+

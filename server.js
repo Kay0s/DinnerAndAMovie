@@ -27,7 +27,7 @@ app.set("view engine", "handlebars");
 // Requiring our routes
 // app.use(HTMLRoutes);
 const routes = ("./controllers/index.js")
-app.use(require(routes));
+app.use (require (routes));
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync({ force: true }).then(function() {
