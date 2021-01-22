@@ -12,7 +12,7 @@ $(function () {
     $.ajax("/api/pairings" + id, {
       type: "PUT",
       data: newPairingsSearchedState,
-    }).then(function () {
+    }).then(() => {
       console.log("changed favorited to", newFavorite);
       // Reload the page to get the updated list
       location.reload();
@@ -31,7 +31,7 @@ $(function () {
     $.ajax("/api/:movies/:dinners", {
       type: "POST",
       data: newPairingsInputed,
-    }).then(function () {
+    }).then(() => {
       console.log("created new favorite");
       // Reload the page to get the updated list
       location.reload();
