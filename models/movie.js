@@ -5,21 +5,22 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
   },
-    createdAt: {
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal('NOW()')
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal('NOW()')
-    }
+  createdAt: {
+    type: DataTypes.DATE,
+    defaultValue: sequelize.literal('NOW()')
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+    defaultValue: sequelize.literal('NOW()')
+  }
   });
 
   Movie.associate = function(models) {
     // Associating Movie with Dinners
     // When an Movie is deleted, also delete any associated Dinners
     Movie.hasMany(models.Dinner, {
-      onDelete: "cascade"
+      onDelete: 'CASCADE',
+      constraints: false
     });
   };
 

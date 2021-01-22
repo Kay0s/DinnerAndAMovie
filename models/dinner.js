@@ -28,7 +28,8 @@ module.exports = function(sequelize, DataTypes) {
     Dinner.belongsTo(models.Movie, {
       foreignKey: {
         allowNull: false
-      }
+      },
+      constraints: false
     });
   };
 
