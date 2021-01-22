@@ -24,7 +24,7 @@ $(function () {
     event.preventDefault();
 
     let newPairingsInputed = {
-      name: $("#npi").val().trim(),
+      movie_name: $("#npi").val().trim(),
     };
 
     // Send the POST request.

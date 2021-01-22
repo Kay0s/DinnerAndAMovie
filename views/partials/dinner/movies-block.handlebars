@@ -1,9 +1,9 @@
 <li>
-	{{name}}
-	{{#if Movie}}
+	{{movie_name}}
+	{{#if pairingsSearched}}
 
 	<button class="transform hover:scale-110 motion-reduce:transform-none change-pairingsSearched" data-id="{{this.id}}"
-		data-newPairingsSearched="{{this.Movie}}">
+		data-newPairingsSearched="{{this.movie_name}}">
 	</button>
 
 
