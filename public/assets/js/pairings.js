@@ -1,4 +1,5 @@
 $(function () {
+  const axios = require("axios");
   const movie_api_key = process.env.MOVIE_API_KEY;
   const dinner_api_key = process.env.DINNER_API_KEY;
 
