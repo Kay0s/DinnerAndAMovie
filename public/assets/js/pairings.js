@@ -83,30 +83,52 @@ function renderEmpty() {
 //     }
 //   })
 
-// $("#search").on("click", () => {
-//   searchMovieGetMeal($("#movietitle").val());
-// })
+$("#npi").on("click", (event) => {
+  searchMovieGetMeal($("#movie_name").val());
+  event.preventDefault();
+});
+function searchMovieGetMeal(movie) {
+  let movieQuery = `http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`;
+  let mealQuery = `https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`;
 
-// function searchMovieGetMeal(movie){
-//   let movieObj;
-//   let mealObj;
+  let movieObj;
+  let mealObj;
+
+  axios.get(movieQuery).then((response) => {
+    movieObj = res;
+    console.log(movieObj);
+  });
+  axios.get(mealQuery).then((response) => {
+    mealObj = res.meals[Math.floor(Math.random() * res.meals.length)];
+    console.log(mealObj);
+    renderMovie(movieObj);
+    renderDinner(mealObj);
+  });
+}
+function renderMovie(movie) {
+  $("#movieInfo").append(`<p>${movie.Title}</p>`);
+}
+function renderDinner(dinner) {
+  $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+}
+
+// function renderDinner(dinner){
+//   $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+// }
 //   $.ajax({
-//       url: `http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`,
-//       method: 'GET'
-//   })
-//   .then( res => {
-//       movieObj = res;
-//       console.log(movieObj);
-//       $.ajax({
-//           url: `https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`,
-//           method: 'GET'
-//       })
-//       .then(res => {
-//           mealObj = res.meals[Math.floor(Math.random() * res.meals.length)]
-//           console.log(mealObj);
-//           renderMovie(movieObj);
-//           renderDinner(mealObj);
-//       });
+//     url: `http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`,
+//     method: "GET",
+//   }).then((res) => {
+
+//     $.ajax({
+//       url: ,
+//       method: "GET",
+//     }).then((res) => {
+//       mealObj = res.meals[Math.floor(Math.random() * res.meals.length)];
+//       console.log(mealObj);
+//       renderMovie(movieObj);
+//       renderDinner(mealObj);
+//     });
 //   });
 // }
 
@@ -118,38 +140,38 @@ function renderEmpty() {
 //   $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
 // }
 
-$("#npi").on("click", (event) => {
-  searchMovieGetMeal($("#movie_name").val());
-  event.preventDefault();
-});
+//  $("#npi").on("click", (event) => {
+//    searchMovieGetMeal($("#movie_name").val());
+//   event.preventDefault();
+//  });
 
-function searchMovieGetMeal(movie) {
-  let one = `http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`;
-  let two = `https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`;
-  const requestOne = axios.get(one);
-  const requestTwo = axios.get(two);
+// function searchMovieGetMeal(movie) {
+//   let one = `http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`;
+//   let two = `https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`;
+//   const requestOne = axios.get(one);
+//   const requestTwo = axios.get(two);
 
-  axios
-    .all([requestOne, requestTwo])
-    .then(
-      axios.spread((...responses) => {
-        const responseOne = responses[0];
-        const responseTwo = responses[1];
+//   axios
+//     .all([requestOne, requestTwo])
+//     .then(
+//       axios.spread((...responses) => {
+//         const responseOne = responses[0];
+//         const responseTwo = responses[1];
 
-        // use/access the results
-        renderMovie(reponseOne);
-        function renderMovie(responseOne) {
-          $("#movieInfo").append(`<p>${movie.Title}</p>`);
-        }
+//         // use/access the results
+//         renderMovie(reponseOne);
+//         function renderMovie(responseOne) {
+//           $("#movieInfo").append(`<p>${movie.Title}</p>`);
+//         }
 
-        function renderDinner(responseTwo) {
-          mealObj = res.meals[Math.floor(Math.random() * res.meals.length)];
-          $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
-        }
-      })
-    )
-    .catch((errors) => {
-      // react on errors.
-      return res.status(404).end();
-    });
-}
+//         function renderDinner(responseTwo) {
+//           mealObj = res.meals[Math.floor(Math.random() * res.meals.length)];
+//           $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+//         }
+//       })
+//     )
+//     .catch((errors) => {
+//       // react on errors.
+//       return res.status(404).end();
+//     });
+// }
