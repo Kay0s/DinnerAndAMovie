@@ -6,7 +6,7 @@ const connection = require("../config/connection.js");
 // Import the model (dinner.js) to use its database functions
 let movie = require("../models/movie.js");
 
-router.post("/api/movie/:id", (req, res) => {
+router.post("/api/movies/:id", (req, res) => {
   db.movies.create(req.body).then((dbMovie) => {
     res.json(dbMovie);
   });
@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/movie/:id", (req, res) => {
+router.get("/movies/:id", (req, res) => {
   db.movie
     .findOne({
       where: {
@@ -31,13 +31,13 @@ router.get("/movie/:id", (req, res) => {
       },
     })
     .then(function (dbMovie) {
-      res.render("movie", {
+      res.render("movies", {
         movieSearchTerm: dbMovie,
       });
     });
 });
 
-router.post("/api/movie", (req, res) => {
+router.post("/api/movies", (req, res) => {
   dinner.insertOne(["movie_name"], [req.body.movie_name], (result) => {
     console.log(req.body);
     // Send back the ID of the new movie
@@ -45,7 +45,7 @@ router.post("/api/movie", (req, res) => {
   });
 });
 
-router.put("/api/movie/:id", (req, res) => {
+router.put("/api/movies/:id", (req, res) => {
   let condition = "id = " + req.params.id;
 
   console.log("condition", condition);
@@ -61,7 +61,7 @@ router.put("/api/movie/:id", (req, res) => {
 });
 
 // Delete a movie
-router.delete("/api/movie/:id", (req, res) => {
+router.delete("/api/movies/:id", (req, res) => {
   let condition = "id = " + req.params.id;
 
   db.movie

@@ -1,8 +1,6 @@
-
-
 let movie_api_key = process.env.MOVIE_API_KEY;
 let dinner_api_key = process.env.DINNER_API_KEY;
-const axios = require('axios').default;
+const axios = require("axios").default;
 
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function () {
@@ -11,7 +9,7 @@ $(function () {
     let newPairingsSearched = $(this).data("newPairingsSearched");
 
     let newPairingsSearchedState = {
-      favorited: newFavorite,
+      favorited: newPairingsSearched,
     };
 
     // Send the PUT request.
@@ -28,17 +26,19 @@ $(function () {
   $(".create-form").on("submit", (event) => {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
-
+    //Get Movie title
+    //if movie exists in db, don't write it
+    //else POST new movie
+    //then post new dinner with movie's id as MovieID attribute
     let newPairingsInputed = {
-      name: $("#npi").val().trim(),
+      movie_name: $("#npi").val().trim(),
     };
-
     // Send the POST request.
-    $.ajax("/api/:movies/:dinners", {
+    $.ajax("/api/movie/", {
       type: "POST",
-      data: newPairingsInputed,
-    }).then(() => {
-/      console.log("created new favorite");
+      data: newPairingsInputed, //movie title
+    }).then(function () {
+      console.log("created new favorite");
       // Reload the page to get the updated list
       location.reload();
     });
@@ -83,7 +83,6 @@ function renderEmpty() {
 //     }
 //   })
 
-
 // $("#search").on("click", () => {
 //   searchMovieGetMeal($("#movietitle").val());
 // })
@@ -119,34 +118,33 @@ function renderEmpty() {
 //   $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
 // }
 
-
-
 $("#search").on("click", () => {
   searchMovieGetMeal($("#movietitle").val());
-})
+});
 
-function searchMovieGetMeal(movie){
+function searchMovieGetMeal(movie) {
   let movieObj;
   let mealObj;
- axios.all ([
-    axiox.get(`http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`),
-    axiox.get(`https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`), 
-  ])
-  .then( res => {
+  axios
+    .all([
+      axiox.get(`http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`),
+      axiox.get(`https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`),
+    ])
+    .then((res) => {
       movieObj = res;
-      console.log(movieObj)
-      })
-      .then(res => {
-          mealObj = res.meals[Math.floor(Math.random() * res.meals.length)]
-          console.log(mealObj);
-          renderMovie(movieObj);
-          renderDinner(mealObj);
-      });
-    }
-function renderMovie(movie){
+      console.log(movieObj);
+    })
+    .then((res) => {
+      mealObj = res.meals[Math.floor(Math.random() * res.meals.length)];
+      console.log(mealObj);
+      renderMovie(movieObj);
+      renderDinner(mealObj);
+    });
+}
+function renderMovie(movie) {
   $("#movieInfo").append(`<p>${movie.Title}</p>`);
 }
 
-function renderDinner(dinner){
+function renderDinner(dinner) {
   $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
 }

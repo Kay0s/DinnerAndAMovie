@@ -9,7 +9,7 @@ router.get("/All", (req, res) => {
     include: [db.Dinner],
   }).then((dbMovie) => {
     res.json(dbMovie);
-  });
+  }); //url.whatever/api/movie/All
 });
 
 //succesfull Postman call http://localhost:8080/api/movie/:
@@ -22,7 +22,7 @@ router.get("/:id", (req, res) => {
   }).then((dbMovie) => {
     res.json(dbMovie);
   });
-});
+}); //url.whatever/api/movie/someidnumber
 
 //succesfull Postman call http://localhost:8080/api/movie/
 router.post("/", (req, res) => {
@@ -40,6 +40,7 @@ router.delete("/:id", (req, res) => {
   }).then((dbMovie) => {
     res.json(dbMovie);
   });
-});
+}); //currently throws an error for movies with associated dinners, but works for movies without dinners
+
 
 module.exports = router;

@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = function (sequelize, DataTypes) {
   let Movie = sequelize.define("Movie", {
     // Giving the Movie model a name of type STRING
     title: {
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Movie.associate = (models) => {
+  Movie.associate = function (models) {
     // Associating Movie with Dinners
     // When an Movie is deleted, also delete any associated Dinners
     Movie.hasMany(models.Dinner, {

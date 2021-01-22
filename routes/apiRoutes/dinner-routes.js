@@ -1,34 +1,13 @@
 let db = require("../../models/");
-let food_api_key = process.env.FOOD_API_KEY;
-let movie_api_key = process.env.MOVIE_API_KEY;
 let router = require("express").Router();
 
-//unsuccesful Postman call http://localhost:8080/api/dinner/All
 router.get("/All", (req, res) => {
-  db.Dinner.findAll({
-    include: [db.Dinner],
-  }).then((dbDinner) => {
+  console.log("we're just gonna send it");
+  db.Dinner.findAll({}).then((dbDinner) => {
     res.json(dbDinner);
   });
-});
+}); //url.whatever/dinner/All
 
-// router.get("/api/dinners", (req, res, next)  => {
-//   axios.get(`https://www.themealdb.com/api/json/v1/${food_api_key}/random.php`);
-//   .then((response) => {
-//     let apiDinnersArray = []
-//     console.log(response);
-//     response.data.map((apiDinners) => {
-//       apiDinnersArray.push(apiDinners);
-//     });
-//     res.render("apiDinners", {
-//       apiDinners: apiDinnersArray
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//    });
-//    ;
-//unsucessful Postman call http://localhost:8080/api/dinner/:
 router.get("/:id", (req, res) => {
   db.Dinner.findOne({
     where: {
@@ -38,14 +17,22 @@ router.get("/:id", (req, res) => {
   }).then((dbDinner) => {
     res.json(dbDinner);
   });
-});
+}); //call by url.whatever/dinner/<id>
 
-//unsucessfull Postman call http://localhost:8080/api/dinner/:
+//TO ADD TO ON-CLICK: check if movie title exists, if so, get id and pass in to write function. If not, write movie then write dinner with that movie's id as the MovieId
 router.post("/", (req, res) => {
+  console.log(req.body);
   db.Dinner.create(req.body).then((dbDinner) => {
     res.json(dbDinner);
   });
 });
+//looks like this in POSTMAN
+//POST url.whatever/api/dinner/
+// {
+//   "mealSTR": "pickles",
+//   "likes": 1,
+//   "MovieId": 2
+// }
 
 //unsucessfull Postamn call http://localhost:8080/api/dinner/:
 router.delete("/:id", (req, res) => {
@@ -56,6 +43,6 @@ router.delete("/:id", (req, res) => {
   }).then((dbDinner) => {
     res.json(dbDinner);
   });
-});
+}); //DELETE url.whatever/api/dinner/
 
 module.exports = router;
