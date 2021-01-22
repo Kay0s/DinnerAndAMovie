@@ -118,8 +118,8 @@ function renderEmpty() {
 //   $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
 // }
 
-$("#search").on("click", () => {
-  searchMovieGetMeal($("#movietitle").val());
+$("#npi").on("click", () => {
+  searchMovieGetMeal($("#movie_name").val());
 });
 
 function searchMovieGetMeal(movie) {
