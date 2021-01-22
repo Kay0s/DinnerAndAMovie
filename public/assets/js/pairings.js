@@ -1,3 +1,6 @@
+let movie_api_key = process.env.MOVIE_API_KEY;
+let dinner_api_key = process.env.DINNER_API_KEY;
+
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function () {
   $(".change-pairingsSearched").on("click", (event) => {

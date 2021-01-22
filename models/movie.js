@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   let Movie = sequelize.define("Movie", {
     // Giving the Movie model a name of type STRING
     title: {
@@ -15,11 +15,12 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  Movie.associate = function (models) {
+  Movie.associate = (models) => {
     // Associating Movie with Dinners
     // When an Movie is deleted, also delete any associated Dinners
     Movie.hasMany(models.Dinner, {
-      onDelete: "cascade",
+      onDelete: "CASCADE",
+      constraints: false,
     });
   };
 
