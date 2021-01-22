@@ -1,9 +1,7 @@
-let movie_api_key = process.env.MOVIE_API_KEY;
-let dinner_api_key = process.env.DINNER_API_KEY;
-const axios = require("axios").default;
-
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function () {
+  const movie_api_key = process.env.MOVIE_API_KEY;
+  const dinner_api_key = process.env.DINNER_API_KEY;
+
   $(".change-pairingsSearched").on("click", (event) => {
     let id = $(this).data("id");
     let newPairingsSearched = $(this).data("newPairingsSearched");
@@ -43,75 +41,74 @@ $(function () {
       location.reload();
     });
   });
-});
 
-// Function for handling what to render when a movie title isn't entered
-function renderEmpty() {
-  let alertDiv = $("<div>");
-  alertDiv.addClass("alert alert-danger");
-  alertDiv.text("You must type in a move name before pressing the search button.");
-  movieContainer.append(alertDiv);
-}
+  // Function for handling what to render when a movie title isn't entered
+  function renderEmpty() {
+    let alertDiv = $("<div>");
+    alertDiv.addClass("alert alert-danger");
+    alertDiv.text("You must type in a move name before pressing the search button.");
+    movieContainer.append(alertDiv);
+  }
 
-// $(".change-liked").on("click", (event) => {
-//   let id = $(this).data("id");
-//   let newLiked = $(this).data("newLiked");
+  // $(".change-liked").on("click", (event) => {
+  //   let id = $(this).data("id");
+  //   let newLiked = $(this).data("newLiked");
 
-//   let newLikedState = {
-//     favorited: newFavorite,
-//   };
-// } let Favorite = sequelize.define('Favorite', {
-//   movie_name: Sequelize.STRING,
-//   dinner_name: Sequelize.STRING,
-// }, {
-//   tableName: 'favorites',
-//   timestamps: false
-// }));
+  //   let newLikedState = {
+  //     favorited: newFavorite,
+  //   };
+  // } let Favorite = sequelize.define('Favorite', {
+  //   movie_name: Sequelize.STRING,
+  //   dinner_name: Sequelize.STRING,
+  // }, {
+  //   tableName: 'favorites',
+  //   timestamps: false
+  // }));
 
-// Favorites
-//   .create({
-//     movie_name: movie_name,
-//     dinner_name: dinner_name
+  // Favorites
+  //   .create({
+  //     movie_name: movie_name,
+  //     dinner_name: dinner_name
 
-//   })
-//   .complete((err, favorite) => {
-//     if (err) {
-//      console.log(err);
-//      res.response("Error adding pairing to Favorites")
-//     } else {
-//      res.response("Pairing added to Favorites!")
-//     }
-//   })
+  //   })
+  //   .complete((err, favorite) => {
+  //     if (err) {
+  //      console.log(err);
+  //      res.response("Error adding pairing to Favorites")
+  //     } else {
+  //      res.response("Pairing added to Favorites!")
+  //     }
+  //   })
 
-$("#npi").on("click", (event) => {
-  searchMovieGetMeal($("#movie_name").val());
-  event.preventDefault();
-});
-function searchMovieGetMeal(movie) {
-  let movieQuery = `http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`;
-  let mealQuery = `https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`;
-
-  let movieObj;
-  let mealObj;
-
-  axios.get(movieQuery).then((response) => {
-    movieObj = res;
-    console.log(movieObj);
+  $("#submit").on("click", (event) => {
+    searchMovieGetMeal($("#movie_name").val());
+    event.preventDefault();
   });
-  axios.get(mealQuery).then((response) => {
-    mealObj = res.meals[Math.floor(Math.random() * res.meals.length)];
-    console.log(mealObj);
-    renderMovie(movieObj);
-    renderDinner(mealObj);
-  });
-}
-function renderMovie(movie) {
-  $("#movieInfo").append(`<p>${movie.Title}</p>`);
-}
-function renderDinner(dinner) {
-  $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
-}
+  function searchMovieGetMeal(movie) {
+    let movieQuery = `http://www.omdbapi.com/?apikey=${movie_api_key}=${movie}`;
+    let mealQuery = `https://www.themealdb.com/api/json/v1/${dinner_api_key}/search.php?f=${res.Title[0]}`;
 
+    let movieObj;
+    let mealObj;
+
+    axios.get(movieQuery).then((response) => {
+      movieObj = res;
+      console.log(movieObj);
+    });
+    axios.get(mealQuery).then((response) => {
+      mealObj = res.meals[Math.floor(Math.random() * res.meals.length)];
+      console.log(mealObj);
+      renderMovie(movieObj);
+      renderDinner(mealObj);
+    });
+  }
+  function renderMovie(movie) {
+    $("#movieInfo").append(`<p>${movie.Title}</p>`);
+  }
+  function renderDinner(dinner) {
+    $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+  }
+});
 // function renderDinner(dinner){
 //   $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
 // }

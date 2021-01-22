@@ -1,40 +1,42 @@
-<div class ="container com-3 p-3"> 
+<div class="container com-3 p-3">
 
-   <h1 class= "font-bold text-4xl text-center mt-9 "> For Your Entertaiment Tonight!</h1>
+  <h1 class="font-bold text-4xl text-center mt-9 "> For Your Entertaiment Tonight!</h1>
 
-    <h3 class ="text-center mt-40" >Enter Movie Name</h3> 
+  <h3 class="text-center mt-40">Enter Movie Name</h3>
 
 
   <form action="" class="md:w-1/2 mx-auto">
 
     <div class="shadow-md">
       <div class="flex items-center bg-purple-400 rounded-t-lg border-b border-purple-500">
-        <input type="text" id="npi" name="movie_name" placeholder="" class="flex-1 p-4 pl-0 bg-transparent placeholder-purple-300 outline-none text-white">
+        <input type="text" id="npi" name="movie_name" placeholder=""
+          class="flex-1 p-4 pl-0 bg-transparent placeholder-purple-300 outline-none text-white">
       </div>
     </div>
 
-    <button class="block md-full rounded bg-blue-400 py-3 text-white font-bold shadow mt-8 flex space-y-6">Submit</button>
+    <button class="block md-full rounded bg-blue-400 py-3 text-white font-bold shadow mt-8 flex space-y-6" id="submit">
+      Submit</button>
 
   </form>
 
-          {{#each movies}}
-          {{#unless pairingsSearched}}
-          {{> movies/movies-block newPairingsSearched=true}}
-          {{/unless}}
-          {{/each}}
+  {{#each movies}}
+  {{#unless pairingsSearched}}
+  {{> movies/movies-block newPairingsSearched=true}}
+  {{/unless}}
+  {{/each}}
 
 
 </div>
 
-     <br> {{! need to add margins but using tailwinds css}}
+<br> {{! need to add margins but using tailwinds css}}
 
-  {{!<label class="block">}}
+{{!<label class="block">}}
   {{!<span class="text-gray-700">Enter Your Favorite Movie</span>}}
- {{! <input type="text" class="form-input mt-1 block w-full" id="npi" name="movie_name">}}
-{{!</label>}}
+  {{! <input type="text" class="form-input mt-1 block w-full" id="npi" name="movie_name">}}
+  {{!</label>}}
 
-          
- 
+
+
 {{!#unless movies}}
 {{!<h3 class="warning">WARNING: This entry does not have a movie!</h3>
 {{/unless}}
@@ -42,24 +44,22 @@
 {{!-- </div> --}}
 
 </div>
-<div class="grid gap-4 grid-cols-2 "> 
-  <div class= "bg-orange-500"> 
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
+<div class="grid gap-4 grid-cols-2 ">
+  <div class="bg-orange-500">
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
   </div>
 
 
-        {{!-- <h2> Details of movie </h2>  --}}
-       
-          {{!-- <ul> --}}
-          {{#each movies}}
-          {{#if newpairingsSearched}}
-          {{> movies/movies-block newPairingsSearched=false}}
-          {{/if}}
-          {{/each}}
-        </div> 
-        {{!-- </ul> --}}
-     </div>
-      
-    
+  {{!-- <h2> Details of movie </h2> --}}
+
+  {{!-- <ul> --}}
+    {{#each movies}}
+    {{#if newpairingsSearched}}
+    {{> movies/movies-block newPairingsSearched=false}}
+    {{/if}}
+    {{/each}}
+</div>
+{{!-- </ul> --}}
+</div>
