@@ -1,34 +1,29 @@
 <div class="container content">
   <h1>Dinner and Moviee</h1> 
 
-  <br>
-
+ 
   <div class="row">
     <div class="col-lg-12 bg-warning text-center">
       <h3>Enter Your Favorite Movie</h3>
-      <form class="form-group">
-
-        <div class="create-form">
-          <input type="text" class="form-group col-md-2" id="npi" name="name">
+      
+        <div class="movie-title">
+          <input type="text" class="col-md-2" id="npi" name="name">
             {{!-- <input type="text" id="bur" name="name"> --}}
           </div>
 
-          <button class="submit btn btn-outline-green">Submit Movie</button>
-           <button class="submit btn btn-outline-green">like</button>
-
-      </form>
+            <button id="search">Search</button>
+      </div>
     </div>
   </div>
-
   <div class="container m-3 p-3">
     <div class="row">
       <div class="col-md-6">
         <h2> Movies </h2>
         <div class="=content-movie">
           {{!-- <ul> --}}
-          {{#each Movies}}
-          {{#unless movie_name}}
-          {{> Movies/movies-block movie_name=true}}
+          {{#each movie}}
+          {{#unless favorited}}
+          {{> movie/movies-block favorited=true}}
           {{/unless}}
           {{/each}}
         </div>
@@ -39,9 +34,9 @@
         <h2> Dinner and Recepis</h2>
 
         {{!-- <ul> --}}
-         {{#each Movies}}
-          {{#if movie_name}}
-          {{> Movies/movies-block movie_name=false}}
+         {{#each movie}}
+          {{#if favorited}}
+          {{> movie/movies-block favorited=false}}
           {{/if}}
           {{/each}}
 
@@ -50,9 +45,9 @@
     </div>
   </div>
 </div>
-
-
-
+    <a class="btn btn-light" href="/favorites">New Post</a>
+</button>
+ 
 
 
 
