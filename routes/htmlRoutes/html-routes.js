@@ -13,6 +13,10 @@ router.get("/", (req, res, next) => {
   res.render("index")
 });
 
+router.get("/test", (req, res) => {
+  res.sendFile(path.join(__dirname,  "..", "..", "/public/test.html"));
+})
+
 // favorites route loads favorites.html
 router.get("/favorites", function (req, res, next) {
   res.render("favorites")
