@@ -7,39 +7,17 @@
   <div class="row">
     <div class="col-lg-12 bg-warning text-center">
       <h3>Previous Movies</h3>
-    
+            <div>
+          {{!-- <ul> --}}
+            <h3>here's where the movies go</h3>
+          {{#each movies}}
+            {{> movies/favorite-block}}
+          {{/each}}
+        </div>
+
           <button class=" submit delete-favorite ">Delete</button>
       
     </div>
   </div>
 
-  <div class="container m-3 p-3">
-    <div class="row">
-      <div class="col-md-6">
-        <h2> Favorite Movies</h2>
-        <div class="=content-dinners">
-          {{!-- <ul> --}}
-          {{#each dinner}}
-          {{#unless favorited}}
-          {{> dinner/history-block favorited=true}}
-          {{/unless}}
-          {{/each}}
-        </div>
-        {{!-- </ul> --}}
-      </div>
-
-      <div class="col-md-6">
-        <h2>Favorites Dinner and Recipes</h2>
-
-        {{!-- <ul> --}}
-        {{#each dinner}}
-        {{#if favorited}}
-        {{> dinner/history-block favorited=false}}
-        {{/if}}
-        {{/each}}
-        {{!-- </ul> --}}
-      </div>
-    </div>
-  </div>
-</div>
 </div>

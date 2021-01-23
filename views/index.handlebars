@@ -17,22 +17,20 @@
   </div>
   <div class="container m-3 p-3">
     <div class="row">
-      <div class="col-md-4 mx-auto">
+      <div class="col-md-4 ">
         <h2 id="movie-title"> Movie </h2>
         <div class="=content-movie">  
           {{!-- <ul> --}}
           {{#each movie}}
-          {{#unless favorited}}
-          {{> movie/movies-block favorited=true}}
-          {{/unless}}
+            {{> movie/movies-block favorited=true}}
           {{/each}}
         </div>
         {{!-- </ul> --}}
       </div>
 
-      <div class="col-md-4 mx-auto"><h2>and</h2></div>
+      <div class="col-md-4 "><h2>and</h2></div>
 
-      <div class="col-md-4 mx-auto">
+      <div class="col-md-4 ">
         <h2 id="meal-name"> Meal </h2>
 
         {{!-- <ul> --}}
