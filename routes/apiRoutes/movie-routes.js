@@ -61,7 +61,7 @@ router.delete("/bytitle/:title", (req, res) => {
 router.get("/pairing/:title", (req, res) => {
   axios({
     method: 'get',
-    url: `http://www.omdbapi.com/?apikey=${process.env.MOVIE_API_KEY}&t=${req.params.title}`,
+    url: `http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.MOVIE_API_KEY}&t=${req.params.title}`,
     responseType: 'json'
   })
     .then(response1 => {

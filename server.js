@@ -3,13 +3,19 @@ const express = require("express");
 // const session = require("express-session");
 // // Requiring passport as we've configured it
 // const passport = require("./config/passport");
-require("dotenv").config();
+if (process.env.NODE_ENV) {
+  require("dotenv").config({
+    path: `${__dirname}/.env.${process.env.NODE_ENV}`,
+  });
+} else {
+  require("dotenv").config();
+}
 const axios = require("axios");
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
 const db = require("./models");
-const { sequelize } = require("./models");
+const sequelize= require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
