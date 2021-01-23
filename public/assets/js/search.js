@@ -6,7 +6,11 @@
 //     let movieObj;
 //     let mealObj;
 //     $.ajax({
+<<<<<<< HEAD
 //         url: `http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.MOVIE_API_KEY}=${movie}`,
+=======
+//         url: `http://www.omdbapi.com/?apikey=25ecd94b&t=${movie}`,
+>>>>>>> moreOnclicks
 //         method: 'GET'
 //     })
 //     .then( res => {
