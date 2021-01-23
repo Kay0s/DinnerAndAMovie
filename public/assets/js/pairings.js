@@ -20,12 +20,32 @@
 
     function renderMovieAndDinner(movie, dinner) {
       $("#poster").attr("src", movie.Poster);
-      $("#title").text(movie.Title);
+      $("#movie-header").text(movie.Title);
       $("#plot").text(movie.Plot);
       $("genre").text(movie.Genre);
       $("#actors").text(movie.Actors);
       $("#directors").text(movie.Directors);
-      $("#movie_card").removeClass("invisible");
+
+      $("#dinner-header").text(dinner.strMeal);
+      $("#mealpic").attr("src", dinner.strMealThumb);
+      
+      //ingredients, iterate through all attributes until we find ingredients
+      $("#ingredients").empty();
+      for(attribute in dinner){
+        if (attribute.length >= 13){
+          if(attribute.slice(0,13) === "strIngredient"){
+            if(dinner[attribute] === ""){ //there's always 20 ingredients returned from the api, if a recipe only needs 5, 6-20 will be empty strings
+              console.log("empty string alert");
+              break //if the attributes are empty, we bail
+            }
+            let index = attribute.slice(13);
+            $("#ingredients").append(`<li>${dinner[attribute]} - ${dinner["strMeasure"+index]}</li>`); //add the ingredients and amounts to the ingredients
+          }
+        }
+      }
+      $("#instructions").text(dinner.strInstructions);
+
+      $(".invisible").removeClass("invisible");
 
 
 
