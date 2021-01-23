@@ -11,15 +11,15 @@
             {{!-- <input type="text" id="bur" name="name"> --}}
           </div>
 
-            <button id="search">Search</button>
+            <button id="search">Search</button><button id="doStuff">doStuff</button>
       </div>
     </div>
   </div>
   <div class="container m-3 p-3">
     <div class="row">
-      <div class="col-md-6">
-        <h2> Movies </h2>
-        <div class="=content-movie">
+      <div class="col-md-4 mx-auto">
+        <h2 id="movie-title"> Movie </h2>
+        <div class="=content-movie">  
           {{!-- <ul> --}}
           {{#each movie}}
           {{#unless favorited}}
@@ -30,8 +30,10 @@
         {{!-- </ul> --}}
       </div>
 
-      <div class="col-md-6">
-        <h2> Dinner and Recepis</h2>
+      <div class="col-md-4 mx-auto"><h2>and</h2></div>
+
+      <div class="col-md-4 mx-auto">
+        <h2 id="meal-name"> Meal </h2>
 
         {{!-- <ul> --}}
          {{#each movie}}
