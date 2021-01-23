@@ -5,7 +5,6 @@ const express = require("express");
 // const passport = require("./config/passport");
 require("dotenv").config();
 const axios = require("axios");
-const path = require('path');
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
@@ -22,7 +21,7 @@ app.use(express.static("public"));
 
 let exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main", layoutsDir: path.join(__dirname, 'views/layouts') }));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our routes

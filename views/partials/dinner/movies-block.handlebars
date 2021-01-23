@@ -1,9 +1,12 @@
 <li>
-	{{movie_name}}
-	{{#if pairingsSearched}}
+	{{Movies}}
+	{{#if movie_name}}
 
-	<button class="transform hover:scale-110 motion-reduce:transform-none change-pairingsSearched" data-id="{{this.id}}"
-		data-newPairingsSearched="{{this.movie_name}}">
+	<button class=" btn btn change-pairingsSearched" data-id="{{this.id}}"
+		data-newFavorite="{{this.dbMovie}}">
+		   <img src="assets/img/BUR-min.gif" width="100" height="100" alt="{{this.dbMovie}}"> 
+
+
 	</button>
 
 

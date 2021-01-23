@@ -2,10 +2,10 @@
 $(function () {
   $(".change-pairingsSearched").on("click", (event) => {
     let id = $(this).data("id");
-    let newPairingsSearched = $(this).data("newPairingsSearched");
+    let newFavorite = $(this).data("newFavorite");
 
     let newPairingsSearchedState = {
-      favorited: newPairingsSearched,
+      favorited: newFavorite,
     };
 
     // Send the PUT request.
@@ -27,10 +27,10 @@ $(function () {
     //else POST new movie
       //then post new dinner with movie's id as MovieID attribute
     let newPairingsInputed = {
-      movie_name: $("#npi").val().trim(),
+      name: $("#npi").val().trim(),
     };
     // Send the POST request.
-    $.ajax("/api/movie/", {
+    $.ajax("/api/movies/", {
       type: "POST",
       data: newPairingsInputed, //movie title
     }).then(function () {
@@ -42,12 +42,12 @@ $(function () {
 });
 
 // Function for handling what to render when a movie title isn't entered
-function renderEmpty() {
-  let alertDiv = $("<div>");
-  alertDiv.addClass("alert alert-danger");
-  alertDiv.text("You must type in a move name before pressing the search button.");
-  movieContainer.append(alertDiv);
-}
+// function renderEmpty() {
+//   let alertDiv = $("<div>");
+//   alertDiv.addClass("alert alert-danger");
+//   alertDiv.text("You must type in a move name before pressing the search button.");
+//   movieContainer.append(alertDiv);
+// }
 
 // $(".change-pairingsSearched").on("click", (event) => {
 //   let id = $(this).data("id");
