@@ -28,6 +28,7 @@ $(() => {
 
 $(".delete-favorite").on("click", function (event) {
   const id = $(this).data("id");
+  console.log(id, event);
   // Send the DELETE request.
   $.delete("/bytitle/:title", (req, res) => {
     //findall where title=req.params.title

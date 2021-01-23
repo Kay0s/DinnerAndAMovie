@@ -12,14 +12,13 @@ if (process.env.NODE_ENV) {
 // const axios = require("axios");
 
 console.log(process.env.DB_PASS);
-const axios = require("axios");
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
 const host = process.env.HOST;
 
 const db = require("./models");
-const sequelize = require("./models");
+
 // Creating express app and configuring middleware needed for authentication
 const app = express();
 app.use(express.urlencoded({ extended: true }));

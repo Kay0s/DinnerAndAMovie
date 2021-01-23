@@ -60,6 +60,7 @@ router.put("/api/dinner/:id", (req, res) => {
 // Delete a dinner
 router.delete("/api/dinner/:id", (req, res) => {
   const condition = "id = " + req.params.id;
+  console.log("condition", condition);
 
   db.dinner
     .destroy({

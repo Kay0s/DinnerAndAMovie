@@ -1,4 +1,3 @@
-const { decodeBase64 } = require("bcryptjs");
 const express = require("express");
 const router = express.Router();
 
@@ -60,7 +59,8 @@ router.put("/api/movie/:id", (req, res) => {
 
 // Delete a movie
 router.delete("/api/movie/:id", (req, res) => {
-  let condition = "id" + req.params.id;
+  const condition = "id" + req.params.id;
+  console.log("condition", condition);
 
   db.movie
     .destroy({
