@@ -22,6 +22,17 @@ router.get("/:id", (req, res) => {
   });
 }); //url.whatever/api/movie/someidnumber
 
+router.get("/byTitle/:title", (req, res) => {
+  db.Movie.findOne({
+    where: {
+      title: req.params.title
+    }
+  })
+  .then(dbMovie => {
+    res.json(dbMovie)
+  });
+})
+
 router.post("/", (req, res) => {
   db.Movie.create(req.body).then((dbMovie) => {
     res.json(dbMovie);
@@ -68,7 +79,7 @@ router.get("/pairing/:title", (req, res) => {
       let movieObj = response1.data;
       axios({
         method: 'get',
-        url: `https://www.themealdb.com/api/json/v1/1/search.php?f=${movieObj.Title[0]}`,
+        url: `https://www.themealdb.com/api/json/v1/${process.env.FOOD_API_KEY}/search.php?f=${movieObj.Title[0]}`,
         responseType: 'json'
       })
       .then(response2 => {
@@ -76,7 +87,6 @@ router.get("/pairing/:title", (req, res) => {
         res.json([movieObj, mealObj]);
       })
     });
-  
 })
 
 
