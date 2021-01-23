@@ -35,6 +35,28 @@ router.post("/", (req, res) => {
 //   "MovieId": 2
 // }
 
+router.put("/like/:movieId/:dinnerId", (req, res) => {
+  console.log(req.body);
+  db.Dinner.findOne({ //get current number of likes
+    where:{
+      id: req.params.dinnerId,
+      MovieId: req.params.movieId
+    },
+    attributes: ["likes"]
+  })
+  .then(dbDinnerLikes => {
+    db.Dinner.update({likes: dbDinnerLikes.likes+1}, //update the likes by 1
+      {
+      where:{
+        id: req.params.dinnerId
+      }
+    })
+    .then(updatedDinner => {
+      res.json(updatedDinner);
+    });
+  });
+});
+
 router.delete("/:id", (req, res) => {
   db.Dinner.destroy({
     where: {
