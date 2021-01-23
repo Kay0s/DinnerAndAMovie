@@ -1,16 +1,51 @@
-// // Make sure we wait to attach our handlers until the DOM is fully loaded.
- $(function () {
-     $(".delete-favorite").on("click", function (event) {
-       let id = $(this).data("id");
-  
-       // Send the DELETE request.
-       $.ajax("/api/:movies/:dinners" + id, {
-         type: "DELETE",
-       }).then(function () {
-         console.log("deleted favorite", id);
-//         // Reload the page to get the updated list
-         location.reload();
-       });
-     });
-   });
-  
+//Make sure we wait to attach our handlers until the DOM is fully loaded.
+$(() => {
+  $.get("/All", (resp) => {
+    console.log(resp);
+    renderMovie(resp.movie);
+    renderDinner(resp.dinner);
+  });
+  function renderMovie(movie) {
+    $("#movieInfo").append(`<p>${movie.Title}</p>`);
+  }
+  function renderDinner(dinner) {
+    $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+  }
+});
+// axios.get("/All", (req, res) => {
+//   db.Movie.findAll({
+//     include: [db.Dinner],
+//   }).then((response) => {
+//     let movie = response.db.Movie;
+//     let dinner = response.db.Dinner;
+//     renderMovie(movie);
+//     renderDinner(dinner);
+//   });
+
+// });
+
+//RenderMovieAndDinners
+
+$(".delete-favorite").on("click", function (event) {
+  const id = $(this).data("id");
+  console.log(id, event);
+  // Send the DELETE request.
+  $.delete("/bytitle/:title", (req, res) => {
+    //findall where title=req.params.title
+    //attributes:id
+    db.Movie.findOne({
+      where: {
+        title: req.params.title,
+      },
+      attributes: ["id"],
+    }).then((dbMovieID) => {
+      db.Movie.destroy({
+        where: {
+          id: dbMovieID.id,
+        },
+      }).then((dbMovie) => {
+        res.json(dbMovie);
+      });
+    });
+  });
+});

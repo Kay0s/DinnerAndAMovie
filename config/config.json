@@ -2,6 +2,7 @@
   "development": {
     "username": "root",
     "password": "process.env.DB_PASS",
+  
     "database": "dinnerandamovie",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -15,10 +16,6 @@
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "username": "root",
-    "password": "vegetable",
-    "database": "database_production",
-    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
