@@ -1,27 +1,25 @@
 //Make sure we wait to attach our handlers until the DOM is fully loaded.
 // $(function () {
 
-
-  router.get("/All", (req, res) => {
-    db.Movie.findAll({
-      include: [db.Dinner],
-    }).then(response(db.Movie, db.Dinner)) => {
-
-      renderMovie(db.Movie);
-      renderDinner(db.Dinner);
-
-    });
+router.get("/All", (req, res) => {
+  db.Movie.findAll({
+    include: [db.Dinner],
+  }).then((response) => {
+    let movie = response.db.Movie;
+    let dinner = response.db.Dinner;
+    renderMovie(movie);
+    renderDinner(dinner);
+  });
+  function renderMovie(movie) {
+    $("#movieInfo").append(`<p>${movie.Title}</p>`);
   }
-      function renderMovie(db.Movie) {
-        $("#movieInfo").append(`<p>${movie.Title}</p>`);
-      }
-      function renderDinner(db.Dinner) {
-        $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
-      }
-      
+  function renderDinner(dinner) {
+    $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+  }
+});
 
+//RenderMovieAndDinners
 
-      
 $(".delete-favorite").on("click", function (event) {
   let id = $(this).data("id");
   // Send the DELETE request.
@@ -43,4 +41,4 @@ $(".delete-favorite").on("click", function (event) {
       });
     });
   });
-})
+});

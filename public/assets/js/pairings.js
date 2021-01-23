@@ -31,8 +31,7 @@ function renderDinner(dinner) {
   $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
 }
 
-function renderDinner(dinner) {
-  $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+
 
   // $(".change-pairingsSearched").on("click", (event) => {
   //   let id = $(this).data("id");

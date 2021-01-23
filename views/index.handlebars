@@ -5,19 +5,19 @@
   <h3 class="text-center mt-40">Enter Movie Name</h3>
 
 
-  <form action="" class="md:w-1/2 mx-auto">
 
-    <div class="shadow-md">
-      <div class="flex items-center bg-purple-400 rounded-t-lg border-b border-purple-500">
-        <input type="text" id="npi" name="movie_name" placeholder=""
-          class="flex-1 p-4 pl-0 bg-transparent placeholder-purple-300 outline-none text-white">
-      </div>
+
+  <div class="shadow-md">
+    <div class="flex items-center bg-purple-400 rounded-t-lg border-b border-purple-500">
+      <input type="text" id="npi" name="movie_name" placeholder=""
+        class="flex-1 p-4 pl-0 bg-transparent placeholder-purple-300 outline-none text-white">
     </div>
+  </div>
 
-    <button class="block md-full rounded bg-blue-400 py-3 text-white font-bold shadow mt-8 flex space-y-6" id="submit">
-      Submit</button>
+  <button class="block md-full rounded bg-blue-400 py-3 text-white font-bold shadow mt-8 flex space-y-6" id="submit">
+    Submit</button>
 
-  </form>
+  /
 
   {{#each movies}}
   {{#unless pairingsSearched}}

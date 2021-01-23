@@ -9,6 +9,7 @@ if (process.env.NODE_ENV) {
 } else {
   require("dotenv").config();
 }
+const axios = require("axios");
 
 console.log(process.env.DB_PASS);
 const axios = require("axios");
