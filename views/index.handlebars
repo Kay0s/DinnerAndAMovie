@@ -22,12 +22,11 @@
   <div class="row">
 
     <div class="col-md-6">
-      <h2> Movies </h2>
+      <h2 id="movie-header"> Movies </h2>
       <div class="=content-movie">
-        <div class="card " id="movie_card" style="width: 18rem;">
-          <img class="card-img-top" src="..." id="poster" alt="">
+        <div class="card invisible" id="movie_card" style="width: 18rem;">
+          <img class="card-img-top" id="poster" alt="">
           <div class="card-body">
-            <h4 class="card-title"> Title of Movie</h5>
               <p class="card-text" id="plot"> </p>
               <p class="card-text" id="genre"> </p>
               <p class="card-text" id="actors"> </p>
@@ -46,15 +45,16 @@
     </div>
 
     <div class="col-md-6">
-      <h2> Dinner Recepis</h2>
-      <div class="card " id="dinner_card" style="width: 18rem;">
-        <img class="card-img-top" src="..." id="mealpic" alt="">
+      <h2 id="dinner-header"> Dinner Recepis</h2>
+      <div class="card invisible" id="dinner_card" style="width: 18rem;">
+        <img class="card-img-top" id="mealpic" alt="">
         <div class="card-body">
-          <h4 class="card-title" id="strMeal"> Dinner</h5>
-            <p class="card-text" id="ingredients"> </p>
+            <h5 class="card-title">Ingredients</h5>
+            <ul class="card-text" id="ingredients"> </ul>
+            <h5 class="card-title">Instructions</h5>
             <p class="card-text" id="intructions"> </p>
             <a href="#" class="btn btn-primary">like Button coming soon</a>
-            <iframe id="video-instructions" width="1903" height="768" src="" frameborder="0"
+            <iframe id="video-instructions" width="1903" height="768" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
         </div>
