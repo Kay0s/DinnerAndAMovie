@@ -73,25 +73,6 @@ router.delete("/bytitle/:title", (req, res) => {
 
 router.get("/pairing/:title", (req, res) => {
   axios({
-<<<<<<< HEAD
-    method: "get",
-    url: `http://www.omdbapi.com/?apikey=${process.env.MOVIE_API_KEY}&t=${req.params.title}`,
-    responseType: "json",
-  }).then((response1) => {
-    const movieObj = response1.data;
-    axios({
-      method: "get",
-      url: `https://www.themealdb.com/api/json/v1/1/search.php?f=${movieObj.Title[0]}`,
-      responseType: "json",
-    }).then((response2) => {
-      const mealObj =
-        response2.data.meals[
-          Math.floor(Math.random() * response2.data.meals.length)
-        ];
-      res.json([movieObj, mealObj]);
-    });
-  });
-=======
     method: 'get',
     url: `http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.MOVIE_API_KEY}&t=${req.params.title}`,
     responseType: 'json'
@@ -109,26 +90,5 @@ router.get("/pairing/:title", (req, res) => {
       })
     });
 })
->>>>>>> moreOnclicks
-
-  axios({
-    method: "get",
-    url: `http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.MOVIE_API_KEY}&t=${req.params.title}`,
-    responseType: "json",
-  }).then((response1) => {
-    const movieObj = response1.data;
-    axios({
-      method: "get",
-      url: `https://www.themealdb.com/api/json/v1/1/search.php?f=${movieObj.Title[0]}`,
-      responseType: "json",
-    }).then((response2) => {
-      const mealObj =
-        response2.data.meals[
-          Math.floor(Math.random() * response2.data.meals.length)
-        ];
-      res.json([movieObj, mealObj]);
-    });
-  });
-});
 
 module.exports = router;
