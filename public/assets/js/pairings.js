@@ -43,22 +43,17 @@
           }
         }
       }
-      $("#instructions").text(dinner.strInstructions);
+      $("#instructions").empty();
+      dinner.strInstructions.split(".").forEach(instruction => {
+        if(instruction === ""){ //if for whatever reason, the instructions are split so there's an empty space, we'll fill it in with an "enjoy!"
+          instruction = "Enjoy!"
+        } 
+        else{
+          $("#instructions").append(`<li>${instruction}.</li>`);
+        }
+      })
 
       $(".invisible").removeClass("invisible");
-
-
-
-      // $("#movieInfo").append(`<p>${movie.Title}</p>`);
-      // let
-      // let elementID = movie.Title.replace(/\s/g, '')+"+"+dinner.strMeal.replace(/\s/g, '');
-      // let newDinner = $(`<p id="${elementID}">${dinner.strMeal}</p>`);
-      // dinner.movieTitle = movie.Title;
-      // newDinner.data("dinner", dinner);
-      // newButton = $(`<button>Like</button>`);
-      // newButton.on("click", () => {likeButton(movie.Title, dinner.strMeal)});
-      // $(newDinner).append(newButton);
-      // $("#dinnerInfo").append(newDinner);
     }
 
     function doStuff() {
