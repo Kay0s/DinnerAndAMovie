@@ -1,10 +1,8 @@
-const { decodeBase64 } = require("bcryptjs");
 const express = require("express");
-let router = express.Router();
-const connection = require("../config/connection.js");
+const router = express.Router();
 
 // Import the model (dinner.js) to use its database functions
-let dinner = require("../models/dinner.js");
+const dinner = require("../models/dinner.js");
 
 router.post("/api/dinner/:id", (req, res) => {
   db.dinners.create(req.body).then((dbDinner) => {
@@ -15,7 +13,7 @@ router.post("/api/dinner/:id", (req, res) => {
 // Create all our routes and set up logic within those routes where required.
 router.get("/", (req, res) => {
   dinner.selectAll((data) => {
-    let hbsObject = {
+    const hbsObject = {
       dinners: data,
     };
     console.log(hbsObject);
@@ -30,7 +28,7 @@ router.get("/dinner/:id", (req, res) => {
         id: req.params.id,
       },
     })
-    .then(function (dbDinner) {
+    .then((dbDinner) => {
       res.render("dinner", {
         dinnerSearchTerm: dbDinner,
       });
@@ -46,23 +44,23 @@ router.post("/api/dinner", (req, res) => {
 });
 
 router.put("/api/dinner/:id", (req, res) => {
-  let condition = "id = " + req.params.id;
+  const condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 
   dinner.updateOne("favorited", 1, condition, (result) => {
-    if (result.changedRows == 0) {
+    if (result.changedRows === 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
-    } else {
-      res.status(200).end();
     }
+    res.status(200).end();
   });
 });
 
 // Delete a dinner
 router.delete("/api/dinner/:id", (req, res) => {
-  let condition = "id = " + req.params.id;
+  const condition = "id = " + req.params.id;
+  console.log("condition", condition);
 
   db.dinner
     .destroy({
@@ -70,10 +68,10 @@ router.delete("/api/dinner/:id", (req, res) => {
         id: req.params.id,
       },
     })
-    .then(function (dbDinner) {
+    .then((dbDinner) => {
       res.json(dbDinner);
     })
-    .catch(function (err) {
+    .catch((err) => {
       console.log("Error" + err);
     });
 });
