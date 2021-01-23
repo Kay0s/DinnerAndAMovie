@@ -19,6 +19,7 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 router.get("/homepage", (req, res) => {
   res.render("homepage");
 });
@@ -27,6 +28,8 @@ router.get("/homepage", (req, res) => {
 router.get("/favorites", function (req, res) {
   res.render("favorites")
 =======
+=======
+>>>>>>> moreOnclicks
 
 router.get("/test", (req, res) => {
   res.sendFile(path.join(__dirname,  "..", "..", "/public/test.html"));
@@ -46,6 +49,5 @@ router.get("/favorites", (req, res) => {
     console.log(favesObj)
     res.render("favorites", favesObj);
   }); //url.whatever/api/movie/All
->>>>>>> moreOnclicks
 });
 module.exports = router;

@@ -17,13 +17,28 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    include: [db.Dinner],
+    include: [db.Dinner]
   }).then((dbMovie) => {
     res.json(dbMovie);
   });
 }); //url.whatever/api/movie/someidnumber
 
+<<<<<<< HEAD
 //succesfull Postman call http://localhost:8080/api/movie/
+=======
+router.get("/byTitle/:title", (req, res) => {
+  db.Movie.findOne({
+    where: {
+      title: req.params.title
+    },
+    include: [db.Dinner]
+  })
+  .then(dbMovie => {
+    res.json(dbMovie)
+  });
+})// /api/movie/byTitle/sometitle
+
+>>>>>>> moreOnclicks
 router.post("/", (req, res) => {
   db.Movie.create(req.body).then((dbMovie) => {
     res.json(dbMovie);
@@ -62,6 +77,7 @@ router.delete("/bytitle/:title", (req, res) => {
 
 router.get("/pairing/:title", (req, res) => {
   axios({
+<<<<<<< HEAD
     method: "get",
     url: `http://www.omdbapi.com/?apikey=${process.env.MOVIE_API_KEY}&t=${req.params.title}`,
     responseType: "json",
@@ -79,6 +95,25 @@ router.get("/pairing/:title", (req, res) => {
       res.json([movieObj, mealObj]);
     });
   });
+=======
+    method: 'get',
+    url: `http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.MOVIE_API_KEY}&t=${req.params.title}`,
+    responseType: 'json'
+  })
+    .then(response1 => {
+      let movieObj = response1.data;
+      axios({
+        method: 'get',
+        url: `https://www.themealdb.com/api/json/v1/${process.env.FOOD_API_KEY}/search.php?f=${movieObj.Title[0]}`,
+        responseType: 'json'
+      })
+      .then(response2 => {
+        let mealObj = response2.data.meals[Math.floor(Math.random() * response2.data.meals.length)];
+        res.json([movieObj, mealObj]);
+      })
+    });
+})
+>>>>>>> moreOnclicks
 
   axios({
     method: "get",
