@@ -16,7 +16,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    include: [db.Dinner],
+    include: [db.Dinner]
   }).then((dbMovie) => {
     res.json(dbMovie);
   });
@@ -26,12 +26,13 @@ router.get("/byTitle/:title", (req, res) => {
   db.Movie.findOne({
     where: {
       title: req.params.title
-    }
+    },
+    include: [db.Dinner]
   })
   .then(dbMovie => {
     res.json(dbMovie)
   });
-})
+})// /api/movie/byTitle/sometitle
 
 router.post("/", (req, res) => {
   db.Movie.create(req.body).then((dbMovie) => {

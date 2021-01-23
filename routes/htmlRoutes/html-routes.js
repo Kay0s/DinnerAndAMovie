@@ -15,14 +15,6 @@ const router = require("express").Router();
 router.get("/", (req, res) => {
   res.render("index")
 });
-<<<<<<< HEAD
-router.get("/homepage", (req, res) => {
-  res.render("homepage")
-});
-// favorites route loads favorites.html
-router.get("/favorites", function (req, res) {
-  res.render("favorites")
-=======
 
 router.get("/test", (req, res) => {
   res.sendFile(path.join(__dirname,  "..", "..", "/public/test.html"));
@@ -37,6 +29,5 @@ router.get("/favorites", (req, res) => {
     console.log(favesObj)
     res.render("favorites", favesObj);
   }); //url.whatever/api/movie/All
->>>>>>> moreOnclicks
 });
 module.exports = router;
