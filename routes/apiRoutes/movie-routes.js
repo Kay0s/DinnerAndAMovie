@@ -38,5 +38,46 @@ router.delete("/:id", (req, res) => {
   });
 }); //currently throws an error for movies with associated dinners, but works for movies without dinners
 
+router.delete("/bytitle/:title", (req, res) => {
+  //findall where title=req.params.title
+  //attributes:id
+  db.Movie.findOne({
+    where: {
+      title: req.params.title,
+    },
+    attributes: ['id']
+  })
+  .then(dbMovieID => {
+    db.Movie.destroy({
+      where: {
+        id: dbMovieID.id,
+      },
+    }).then((dbMovie) => {
+      res.json(dbMovie);
+    });
+  });
+});
+
+router.get("/pairing/:title", (req, res) => {
+  axios({
+    method: 'get',
+    url: `http://www.omdbapi.com/?apikey=${process.env.MOVIE_API_KEY}&t=${req.params.title}`,
+    responseType: 'json'
+  })
+    .then(response1 => {
+      let movieObj = response1.data;
+      axios({
+        method: 'get',
+        url: `https://www.themealdb.com/api/json/v1/1/search.php?f=${movieObj.Title[0]}`,
+        responseType: 'json'
+      })
+      .then(response2 => {
+        let mealObj = response2.data.meals[Math.floor(Math.random() * response2.data.meals.length)];
+        res.json([movieObj, mealObj]);
+      })
+    });
+  
+})
+
 
 module.exports = router;
