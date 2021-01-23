@@ -6,7 +6,7 @@
   "scripts": {
     "build-css": "tailwindcss build source_file/style.css -o public/assets/css/style.css",
     "start": "node server.js",
-    "lint": "eslint **/*.js",
+    "lint": "eslint \"./**/*.js\"",
     "fix": "eslint **/*.js --fix"
   },
   "repository": {
