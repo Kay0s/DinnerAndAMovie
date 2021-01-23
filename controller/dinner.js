@@ -49,7 +49,7 @@ router.put("/api/dinner/:id", (req, res) => {
   console.log("condition", condition);
 
   dinner.updateOne("favorited", 1, condition, (result) => {
-    if (result.changedRows == 0) {
+    if (result.changedRows === 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     }

@@ -1,7 +1,6 @@
 const db = require("../../models");
 const axios = require("axios");
 const router = require("express").Router();
-const movie_api_key = process.env.MOVIE_API_KEY;
 
 //succesful Postman call http://localhost:8080/api/movie/All
 router.get("/All", (req, res) => {
@@ -73,7 +72,29 @@ router.get("/pairing/:title", (req, res) => {
       url: `https://www.themealdb.com/api/json/v1/1/search.php?f=${movieObj.Title[0]}`,
       responseType: "json",
     }).then((response2) => {
-      let mealObj = response2.data.meals[Math.floor(Math.random() * response2.data.meals.length)];
+      const mealObj =
+        response2.data.meals[
+          Math.floor(Math.random() * response2.data.meals.length)
+        ];
+      res.json([movieObj, mealObj]);
+    });
+  });
+
+  axios({
+    method: "get",
+    url: `http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.MOVIE_API_KEY}&t=${req.params.title}`,
+    responseType: "json",
+  }).then((response1) => {
+    const movieObj = response1.data;
+    axios({
+      method: "get",
+      url: `https://www.themealdb.com/api/json/v1/1/search.php?f=${movieObj.Title[0]}`,
+      responseType: "json",
+    }).then((response2) => {
+      const mealObj =
+        response2.data.meals[
+          Math.floor(Math.random() * response2.data.meals.length)
+        ];
       res.json([movieObj, mealObj]);
     });
   });
