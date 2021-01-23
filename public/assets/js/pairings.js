@@ -2,10 +2,10 @@
 $(function () {
   $(".change-pairingsSearched").on("click", (event) => {
     let id = $(this).data("id");
-    let newPairingsSearched = $(this).data("newPairingsSearched");
+    let newFavorite = $(this).data("newFavorite");
 
     let newPairingsSearchedState = {
-      favorited: newPairingsSearched,
+      favorited: newFavorite,
     };
 
     // Send the PUT request.
@@ -19,15 +19,22 @@ $(function () {
     });
   });
 
-  $(".create-form").on("submit", (event) => {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
+  $("movie-title").on("click",(event) => {
+    let id = $(this).data("id");
+    let title = $(this).data("title")
+
+    let newPairingsInputed = {
+      movieTitle: title,
+    };
+    //Make sure to preventDefault on a submit event.
+    //  event.preventDefault();
     //Get Movie title
     //if movie exists in db, don't write it
     //else POST new movie
       //then post new dinner with movie's id as MovieID attribute
     let newPairingsInputed = {
-      movie_name: $("#npi").val().trim(),
+      name: $("#npi").val().trim(),
+      
     };
     // Send the POST request.
     $.ajax("/api/movie/", {
@@ -39,15 +46,17 @@ $(function () {
       location.reload();
     });
   });
+  // function renderEmpty() {
+  //     let alertDiv = $("<div>");
+  //     alertDiv.addClass("alert alert-danger");
+  //     alertDiv.text("Check the spelling");
+  //     movieContainer.append(alertDiv);
+  //    }
+  //    renderEmpty();
+
 });
 
-// Function for handling what to render when a movie title isn't entered
-function renderEmpty() {
-  let alertDiv = $("<div>");
-  alertDiv.addClass("alert alert-danger");
-  alertDiv.text("You must type in a move name before pressing the search button.");
-  movieContainer.append(alertDiv);
-}
+
 
 // $(".change-pairingsSearched").on("click", (event) => {
 //   let id = $(this).data("id");
