@@ -1,7 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "puppies",
+    "password": "process.env.DB_PASS",
+  
     "database": "dinnerandamovie",
     "host": "127.0.0.1",
     "dialect": "mysql"
