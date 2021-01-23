@@ -23,9 +23,6 @@ router.get("/:id", (req, res) => {
   });
 }); //url.whatever/api/movie/someidnumber
 
-<<<<<<< HEAD
-//succesfull Postman call http://localhost:8080/api/movie/
-=======
 router.get("/byTitle/:title", (req, res) => {
   db.Movie.findOne({
     where: {
@@ -38,7 +35,6 @@ router.get("/byTitle/:title", (req, res) => {
   });
 })// /api/movie/byTitle/sometitle
 
->>>>>>> moreOnclicks
 router.post("/", (req, res) => {
   db.Movie.create(req.body).then((dbMovie) => {
     res.json(dbMovie);
