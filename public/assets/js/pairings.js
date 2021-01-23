@@ -19,15 +19,18 @@ function searchMovieGetMeal(title) {
 }
 
 function renderMovieAndDinner(movie, dinner) {
-  $("#movieInfo").append(`<p>${movie.Title}</p>`);
+  //console.log("rendering into html")
+  $("#movie-title").text(movie.Title);
+  let newMovie = $("#movie-card");
   let elementID = movie.Title.replace(/\s/g, '')+"+"+dinner.strMeal.replace(/\s/g, '');
-  let newDinner = $(`<p id="${elementID}">${dinner.strMeal}</p>`);
+  let newDinner = $(`#dinner-card`);
   dinner.movieTitle = movie.Title;
   newDinner.data("dinner", dinner);
   newButton = $(`<button>Like</button>`);
   newButton.on("click", () => {likeButton(movie.Title, dinner.strMeal)});
   $(newDinner).append(newButton);
   $("#dinnerInfo").append(newDinner);
+  $("#meal-name").text(dinner.strMeal);
 }
 
 function doStuff() {
