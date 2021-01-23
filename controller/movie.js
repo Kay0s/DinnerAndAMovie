@@ -1,10 +1,9 @@
 const { decodeBase64 } = require("bcryptjs");
 const express = require("express");
-let router = express.Router();
-const connection = require("../config/connection.js");
+const router = express.Router();
 
 // Import the model (dinner.js) to use its database functions
-let movie = require("../models/movie.js");
+const movie = require("../models/movie.js");
 
 router.post("/api/movie/:id", (req, res) => {
   db.movies.create(req.body).then((dbMovie) => {
@@ -15,7 +14,7 @@ router.post("/api/movie/:id", (req, res) => {
 // Create all our routes and set up logic within those routes where required.
 router.get("/", (req, res) => {
   movie.selectAll((data) => {
-    let hbsObject = {
+    const hbsObject = {
       movies: data,
     };
     console.log(hbsObject);
@@ -30,7 +29,7 @@ router.get("/movie/:id", (req, res) => {
         id: req.params.id,
       },
     })
-    .then(function (dbMovie) {
+    .then((dbMovie) => {
       res.render("movies", {
         movieSearchTerm: dbMovie,
       });
@@ -46,7 +45,7 @@ router.post("/api/movie", (req, res) => {
 });
 
 router.put("/api/movie/:id", (req, res) => {
-  let condition = "id = " + req.params.id;
+  const condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 
@@ -54,15 +53,14 @@ router.put("/api/movie/:id", (req, res) => {
     if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
-    } else {
-      res.status(200).end();
     }
+    res.status(200).end();
   });
 });
 
 // Delete a movie
 router.delete("/api/movie/:id", (req, res) => {
-  let condition = "id = " + req.params.id;
+  const condition = "id = " + req.params.id;
 
   db.movie
     .destroy({
@@ -70,10 +68,10 @@ router.delete("/api/movie/:id", (req, res) => {
         id: req.params.id,
       },
     })
-    .then(function (dbMovie) {
+    .then((dbMovie) => {
       res.json(dbMovie);
     })
-    .catch(function (err) {
+    .catch((err) => {
       console.log("Error" + err);
     });
 });

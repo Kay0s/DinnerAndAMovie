@@ -1,14 +1,9 @@
 //Make sure we wait to attach our handlers until the DOM is fully loaded.
-// $(function () {
-
-router.get("/All", (req, res) => {
-  db.Movie.findAll({
-    include: [db.Dinner],
-  }).then((response) => {
-    let movie = response.db.Movie;
-    let dinner = response.db.Dinner;
-    renderMovie(movie);
-    renderDinner(dinner);
+$(() => {
+  $.get("/All", (resp) => {
+    console.log(resp);
+    renderMovie(resp.movie);
+    renderDinner(resp.dinner);
   });
   function renderMovie(movie) {
     $("#movieInfo").append(`<p>${movie.Title}</p>`);
@@ -17,13 +12,24 @@ router.get("/All", (req, res) => {
     $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
   }
 });
+// axios.get("/All", (req, res) => {
+//   db.Movie.findAll({
+//     include: [db.Dinner],
+//   }).then((response) => {
+//     let movie = response.db.Movie;
+//     let dinner = response.db.Dinner;
+//     renderMovie(movie);
+//     renderDinner(dinner);
+//   });
+
+// });
 
 //RenderMovieAndDinners
 
 $(".delete-favorite").on("click", function (event) {
-  let id = $(this).data("id");
+  const id = $(this).data("id");
   // Send the DELETE request.
-  router.delete("/bytitle/:title", (req, res) => {
+  $.delete("/bytitle/:title", (req, res) => {
     //findall where title=req.params.title
     //attributes:id
     db.Movie.findOne({

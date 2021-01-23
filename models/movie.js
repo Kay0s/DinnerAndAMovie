@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  let Movie = sequelize.define("Movie", {
+  const Movie = sequelize.define("Movie", {
     // Giving the Movie model a name of type STRING
     title: {
       type: DataTypes.STRING,

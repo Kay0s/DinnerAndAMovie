@@ -1,5 +1,5 @@
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 
 // index route loads view.html
 router.get("/", (req, res, next) => {

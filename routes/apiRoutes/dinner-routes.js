@@ -1,5 +1,5 @@
-let db = require("../../models/");
-let router = require("express").Router();
+const db = require("../../models/");
+const router = require("express").Router();
 
 router.get("/All", (req, res) => {
   console.log("we're just gonna send it");
@@ -34,7 +34,29 @@ router.post("/", (req, res) => {
 //   "MovieId": 2
 // }
 
-//unsucessfull Postamn call http://localhost:8080/api/dinner/:
+router.put("/like/:movieId/:dinnerId", (req, res) => {
+  console.log(req.body);
+  db.Dinner.findOne({
+    //get current number of likes
+    where: {
+      id: req.params.dinnerId,
+      MovieId: req.params.movieId,
+    },
+    attributes: ["likes"],
+  }).then((dbDinnerLikes) => {
+    db.Dinner.update(
+      { likes: dbDinnerLikes.likes + 1 }, //update the likes by 1
+      {
+        where: {
+          id: req.params.dinnerId,
+        },
+      }
+    ).then((updatedDinner) => {
+      res.json(updatedDinner);
+    });
+  });
+});
+
 router.delete("/:id", (req, res) => {
   db.Dinner.destroy({
     where: {

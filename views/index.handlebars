@@ -1,47 +1,65 @@
-<div class="container com-3 p-3">
+<div class="container content">
+  <h1>Dinner and Moviee</h1>
+  <h1>hello?</h1>
 
-  <h1 class="font-bold text-4xl text-center mt-9 "> For Your Entertaiment Tonight!</h1>
+  <div class="row">
+    <div class="col-lg-12 bg-warning text-center">
+      <h3>Enter Your Favorite Movie</h3>
 
-  <h3 class="text-center mt-40">Enter Movie Name</h3>
+      <div class="movie-title">
+        <input type="text" class="col-md-2" id="movietitle" name="name">
+        {{!-- <input type="text" id="bur" name="name"> --}}
+      </div>
 
+      <button id="search">Search</button>
+      <div id="movieInfo"></div>
 
-
-
-  <div class="shadow-md">
-    <div class="flex items-center bg-purple-400 rounded-t-lg border-b border-purple-500">
-      <input type="text" id="npi" name="movie_name" placeholder=""
-        class="flex-1 p-4 pl-0 bg-transparent placeholder-purple-300 outline-none text-white">
+      <div id="dinnerInfo"></div>
     </div>
   </div>
-
-  <button class="block md-full rounded bg-blue-400 py-3 text-white font-bold shadow mt-8 flex space-y-6" id="submit">
-    Submit</button>
-
-  /
-
-  {{#each movies}}
-  {{#unless pairingsSearched}}
-  {{> movies/movies-block newPairingsSearched=true}}
-  {{/unless}}
-  {{/each}}
-
-
 </div>
+<div class="container m-3 p-3">
+  <div class="row">
+    <div class="col-md-6">
+      <h2> Movies </h2>
+      <div class="=content-movie">
+        {{!-- <ul> --}}
+          {{#each movie}}
+          {{#unless favorited}}
+          {{> movie/movies-block favorited=true}}
+          {{/unless}}
+          {{/each}}
+      </div>
+      {{!-- </ul> --}}
+    </div>
 
-<br> {{! need to add margins but using tailwinds css}}
+    <div class="col-md-6">
+      <h2> Dinner and Recepis</h2>
 
-{{!<label class="block">}}
-  {{!<span class="text-gray-700">Enter Your Favorite Movie</span>}}
-  {{! <input type="text" class="form-input mt-1 block w-full" id="npi" name="movie_name">}}
-  {{!</label>}}
+      {{!-- <ul> --}}
+        {{#each movie}}
+        {{#if favorited}}
+        {{> movie/movies-block favorited=false}}
+        {{/if}}
+        {{/each}}
+
+        {{!-- </ul> --}}
+    </div>
+  </div>
+</div>
+</div>
+<a class="btn btn-light" href="/favorites">New Post</a>
+</button>
 
 
 
-{{!#unless movies}}
-{{!<h3 class="warning">WARNING: This entry does not have a movie!</h3>
-{{/unless}}
 
-{{!-- </div> --}}
+
+
+
+
+
+
 
 </div>
 <div class="grid gap-4 grid-cols-2 ">

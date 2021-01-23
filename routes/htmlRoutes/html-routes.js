@@ -1,7 +1,7 @@
 // Dependencies
 // =============================================================
 const router = require("express").Router();
- let path = require("path");
+const path = require("path");
 
 // Routes
 // =============================================================
@@ -14,7 +14,7 @@ router.get("/", (req, res, next) => {
 });
 
 // favorites route loads favorites.html
-router.get("/favorites", function (req, res, next) {
+router.get("/favorites", (req, res, next) => {
   res.render("favorites");
 });
 

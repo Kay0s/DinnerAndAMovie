@@ -3,8 +3,8 @@
 // router.use("/api/movie", require("./apiRoutes/movie-routes"));
 // router.use("/", require("./htmlRoutes/html-routes"));
 
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 
 router.use("/api/movie", require("./apiRoutes/movie-routes"));
 router.use("/api/dinner", require("./apiRoutes/dinner-routes"));
@@ -24,7 +24,7 @@ router.get("/", (req, res, next) => {
 });
 
 // favorites route loads favorites.html
-router.get("/favorites", function (req, res, next) {
+router.get("/favorites", (req, res, next) => {
   res.render("favorites");
 });
 
