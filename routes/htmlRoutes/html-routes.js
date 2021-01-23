@@ -2,6 +2,9 @@
 // =============================================================
 const router = require("express").Router();
  let path = require("path");
+ const axios = require("axios");
+ const db = require("../../models");
+
 
 // Routes
 // =============================================================
@@ -18,8 +21,13 @@ router.get("/test", (req, res) => {
 })
 
 // favorites route loads favorites.html
-router.get("/favorites", function (req, res, next) {
-  res.render("favorites")
+router.get("/favorites", (req, res) => {
+  db.Movie.findAll({
+    include: [db.Dinner],
+  }).then((dbMovie) => {
+    favesObj = {movies: dbMovie}
+    console.log(favesObj)
+    res.render("favorites", favesObj);
+  }); //url.whatever/api/movie/All
 });
-
 module.exports = router;
