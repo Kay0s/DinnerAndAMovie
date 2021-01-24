@@ -18,7 +18,7 @@ router.get("/homepage", (req, res) => {
 });
 // favorites route loads favorites.html
  
-router.get("/favorites", function (req, res) {
+router.get("/All", function (req, res) {
   res.render("favorites")
 });
 
