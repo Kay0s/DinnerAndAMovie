@@ -40,7 +40,7 @@ router.get("/favorites", (req, res) => {
     include: [db.Dinner],
   }).then((dbMovie) => {
     favesObj = { movies: dbMovie };
-    console.log(favesObj);
+    console.log("favorites just happened", favesObj);
     res.render("favorites", favesObj);
   }); //url.whatever/api/movie/All
 });
