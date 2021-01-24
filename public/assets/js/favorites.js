@@ -1,32 +1,16 @@
-//Make sure we wait to attach our handlers until the DOM is fully loaded.
-// $(() => {
-//   $.get("/All", (resp) => {
-//     console.log(resp);
-//     renderMovie(resp.movie);
-//     renderDinner(resp.dinner);
-//   });
-//   function renderMovie(movie) {
-//     $("#movieInfo").append(`<p>${movie.Title}</p>`);
-//   }
-//   function renderDinner(dinner) {
-//     $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
-//   }
-// });
-
-// axios.get("/All", (req, res) => {
-//   db.Movie.findAll({
-//     include: [db.Dinner],
-//   }).then((response) => {
-//     let movie = response.db.Movie;
-//     let dinner = response.db.Dinner;
-//     renderMovie(movie);
-//     renderDinner(dinner);
-//   });
-
-// });
-
-// //RenderMovieAndDinners
-
+$(() => {
+  $.get("/All", (resp) => {
+    console.log(resp);
+    renderMovie(resp.movie);
+    renderDinner(resp.dinner);
+  });
+  function renderMovie(movie) {
+    $("#movieInfo").append(`<p>${movie.Title}</p>`);
+  }
+  function renderDinner(dinner) {
+    $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+  }
+});
 $(".delete-favorite").on("click", function (event) {
   const id = $(this).data("id");
   console.log(id, event);

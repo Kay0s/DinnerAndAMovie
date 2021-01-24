@@ -4,53 +4,58 @@
   <div class="row">
     <div class="col-lg-12 bg-warning text-center">
       <h3>Enter Your Favorite Movie</h3>
-      
-        <div class="movie-title">
-          <input type="text" class="col-md-2" id="movietitle" name="name">
-          </div>
 
-            <button id="search">Search</button>
-            <button id="doStuff">doStuff</button>
+      <div class="movie-title">
+        <input type="text" class="col-md-2" id="movietitle" name="name">
       </div>
+
+      <button id="search">Search</button>
+      <button id="doStuff">doStuff</button>
     </div>
-  <div class="row">
-    <div class="col-md-4"><h2 id="movie-header">Movie</h2></div>
-    <div class="col-md-4"><h2>And</h2></div>
-    <div class="col-md-4"><h2 id="dinner-header">Dinner</h2><button id="like-button">like</button></div>
-    
-    
   </div>
-<div class="container m-3 p-3">
-
   <div class="row">
+    <div class="col-md-4">
+      <h2 id="movie-header">Movie</h2>
+    </div>
+    <div class="col-md-4">
+      <h2>And</h2>
+    </div>
+    <div class="col-md-4">
+      <h2 id="dinner-header">Dinner</h2><button id="like-button">like</button>
+    </div>
 
-    <div class="col-md-6">
 
-      <div class="=content-movie">
-        <div class="card invisible mx-auto" id="movie_card">
-          <img class="card-img-top" id="poster" alt="">
-          <div class="card-body">
+  </div>
+  <div class="container m-3 p-3">
+
+    <div class="row">
+
+      <div class="col-md-6">
+
+        <div class="=content-movie">
+          <div class="card invisible mx-auto" id="movie_card">
+            <img class="card-img-top" id="poster" alt="">
+            <div class="card-body">
               <p class="card-text" id="plot"> </p>
-              <p class="card-text" id="genre"> </p> 
+              <p class="card-text" id="genre"> </p>
               <p class="card-text" id="actors"> </p>
               <p class="card-text" id="directors"> </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-6">
-      <div class="card invisible mx-auto" id="dinner_card">
-        <img class="card-img-top" id="mealpic" alt="">
-        <div class="card-body">
+      <div class="col-md-6">
+        <div class="card invisible mx-auto" id="dinner_card">
+          <img class="card-img-top" id="mealpic" alt="">
+          <div class="card-body">
             <h5 class="card-title">Ingredients</h5>
             <ul class="card-text" id="ingredients"> </ul>
             <h5 class="card-title">Instructions</h5>
             <ol class="card-text" id="instructions"> </ol>
             {{!-- use heart for pre-like then heart-fill for after a like --}}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
