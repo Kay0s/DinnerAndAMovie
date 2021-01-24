@@ -9,9 +9,6 @@ if (process.env.NODE_ENV) {
 } else {
   require("dotenv").config();
 }
-// const axios = require("axios");
-
-console.log(process.env.DB_PASS);
 
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
