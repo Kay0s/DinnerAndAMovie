@@ -1,7 +1,7 @@
 //Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(() => {
-  $.get("/All", (resp) => {
-    console.log(resp);
+  $.get("/api/dinner/All", (resp) => {
+    console.log("All",resp);
     renderMovie(resp.movie);
     renderDinner(resp.dinner);
   });
