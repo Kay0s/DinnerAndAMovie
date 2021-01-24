@@ -1,13 +1,6 @@
 // Dependencies
-// =============================================================
+// =================================
 const router = require("express").Router();
-<<<<<<< HEAD
- let path = require("path");
- const axios = require("axios");
- const db = require("../../models");
-
-=======
->>>>>>> 89d4e6cd9d117c1e3b875d9c2827ec284432fcf5
 
 // Routes
 // =============================================================
@@ -18,27 +11,26 @@ const router = require("express").Router();
 router.get("/", (req, res) => {
   res.render("index");
 });
-<<<<<<< HEAD
-<<<<<<< HEAD
+ 
+ 
 router.get("/homepage", (req, res) => {
   res.render("homepage");
 });
 // favorites route loads favorites.html
-<<<<<<< HEAD
+ 
 router.get("/favorites", function (req, res) {
   res.render("favorites")
-=======
-=======
->>>>>>> moreOnclicks
+});
+
+
 
 router.get("/test", (req, res) => {
   res.sendFile(path.join(__dirname,  "..", "..", "/public/test.html"));
-})
-=======
+});
+
 router.get("/favorites", (req, res) => {
   res.render("favorites");
 });
->>>>>>> 89d4e6cd9d117c1e3b875d9c2827ec284432fcf5
 
 // favorites route loads favorites.html
 router.get("/favorites", (req, res) => {

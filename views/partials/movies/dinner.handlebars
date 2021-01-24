@@ -2,7 +2,8 @@
 	{{dinner}}
 	{{dataValues.mealSTR}}
 	{{dataValues.likes}}
-	{{dataValues.MovieId}}
+	{{Movie}}
+    {{#if favorite}}
 
 	<button class=" btn btn delete-favorite" data-id="{{this.id}}"
 		data-newFavorite="{{this.dinner}}">
@@ -12,7 +13,7 @@
 	</button>
 
 
-
+{{/if}}
 
 
 
