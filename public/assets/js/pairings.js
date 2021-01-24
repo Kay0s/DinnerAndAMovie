@@ -4,7 +4,8 @@ $("#search").on("click", function () {
 
 $("#like-button").on("click", () => {
   likeButton($("#like-button").data().movieTitle, $("#like-button").data().dinnerName)
-})
+  window.location.href = "/api/dinner/All"
+});
 
 $("#doStuff").on("click", doStuff);
 
@@ -131,6 +132,7 @@ function likeButton(movieTitle, dinnerName) {
           console.log("found a dinner match");
           dinnerId = dinner.id;
         }
+      
       });
       if(found){
         console.log("liking", movieRes.id, dinnerId);
@@ -143,6 +145,7 @@ function likeButton(movieTitle, dinnerName) {
           console.log("liked movie", response.data);
           return response.data;
         })
+
       }
       else{
         //if there's not a matching dinner, post one
@@ -160,7 +163,11 @@ function likeButton(movieTitle, dinnerName) {
           console.log(`Posting new dinner: ${dinnerName} to ${movieTitle}`)
           return response.data;
         })
+
       }
+
     }
   })
+
 };
+
