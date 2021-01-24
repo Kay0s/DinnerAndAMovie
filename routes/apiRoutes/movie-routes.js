@@ -23,6 +23,17 @@ router.get("/:id", (req, res) => {
   });
 }); //url.whatever/api/movie/someidnumber
 
+router.get("/byTitle/:title", (req, res) => {
+  db.Movie.findOne({
+    where: {
+      title: req.params.title,
+    },
+    include: [db.Dinner],
+  }).then((dbMovie) => {
+    res.json(dbMovie);
+  });
+}); // /api/movie/byTitle/sometitle
+
 //succesfull Postman call http://localhost:8080/api/movie/
 router.post("/", (req, res) => {
   db.Movie.create(req.body).then((dbMovie) => {
