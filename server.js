@@ -32,7 +32,7 @@ const routes = "./routes";
 app.use(require(routes));
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync({ force:false }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, host, () => {
     console.log("App listening on PORT " + PORT);
   });

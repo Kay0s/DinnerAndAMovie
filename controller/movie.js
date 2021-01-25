@@ -11,13 +11,13 @@ router.post("/api/movie/:id", (req, res) => {
 });
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", (req, res) => {
+router.get("/favorites", (req, res) => {
   movie.selectAll((data) => {
     const hbsObject = {
       movies: data,
     };
     console.log(hbsObject);
-    res.render("index", hbsObject);
+    res.render("favorites", hbsObject);
   });
 });
 

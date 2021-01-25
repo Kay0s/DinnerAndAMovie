@@ -1,7 +1,7 @@
 //Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(function(){
+$(() => {
   $.get("/api/dinner/All", (resp) => {
-    console.log("All",resp);
+    console.log("All", resp);
     renderMovie(resp.movie);
     renderDinner(resp.dinner);
   });
@@ -11,6 +11,10 @@ $(function(){
   function renderDinner(dinner) {
     $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
   }
+});
+// $(".delete-favorite").on("click", function (event) {
+//   const id = $(this).data("id");
+//   console.log(id, event);
 
 // axios.get("/All", (req, res) => {
 //   db.Movie.findAll({
@@ -26,22 +30,18 @@ $(function(){
 
 //RenderMovieAndDinners
 
+// $("#delete-favorite").on("click", function (event) {
+//   const id = $(this).data("id");
+//   // Send the DELETE request.
+//   $.ajax("/api/dinner/" + id, {
+//     type: "DELETE",
+//   }).then( () {
+//     console.log("deleted dinner", id);
+//     // Reload the page to get the updated list
+//     location.reload();
+//   });
+// });
 
-$("#delete-favorite").on("click", function(event) {
-  let id = $(this).data("id");
-
-  // Send the DELETE request.
-  $.ajax("/api/dinner/" + id, {
-    type: "DELETE"
-  }).then(
-    function() {
-      console.log("deleted dinner", id);
-      // Reload the page to get the updated list
-      location.reload();
-    }
-  );
-});
-});
 //  $("#delete-favorite").on("click", function (event) {
 //    const id = $(this).data("id");
 //  console.log("hello");
