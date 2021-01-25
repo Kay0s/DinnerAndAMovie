@@ -4,6 +4,7 @@ $("#search").on("click", function () {
 
 $("#like-button").on("click", () => {
   likeButton($("#like-button").data().movieTitle, $("#like-button").data().dinnerName)
+
 });
 
 $("#doStuff").on("click", doStuff);
@@ -116,7 +117,7 @@ function likeButton(movieTitle, dinnerName) {
         .then(response2 => {
           console.log("posted dinner to movie", response.data);
           return response2;
-        })
+        }).then((window.location.href="/api/dinner/All"))
       })
     }
     else{
