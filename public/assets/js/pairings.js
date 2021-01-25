@@ -4,7 +4,6 @@ $("#search").on("click", function () {
 
 $("#like-button").on("click", () => {
   likeButton($("#like-button").data().movieTitle, $("#like-button").data().dinnerName)
-  window.location.href = "/api/dinner/All"
 });
 
 $("#doStuff").on("click", doStuff);
@@ -25,6 +24,7 @@ function searchMovieGetMeal(title) {
 
 function renderMovieAndDinner(movie, dinner) {
   $("#like-button").data({movieTitle: movie.Title, dinnerName: dinner.strMeal});
+ 
 
   $("#poster").attr("src", movie.Poster);
   $("#movie-header").text(movie.Title);
