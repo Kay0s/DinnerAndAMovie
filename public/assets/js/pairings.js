@@ -122,10 +122,12 @@ function likeButton(movieTitle, dinnerName) {
             likes: 1,
             MovieId: response1.data.id,
           },
-        }).then((response2) => {
-          console.log("posted dinner to movie", response.data);
-          return response2;
-        });
+        })
+          .then((response2) => {
+            console.log("posted dinner to movie", response.data);
+            return response2;
+          })
+          .then((window.location.href = "/api/dinner/All"));
       });
     } else {
       //else if there is a movie, check for matching dinners

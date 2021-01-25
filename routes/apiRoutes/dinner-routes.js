@@ -4,7 +4,11 @@ const router = require("express").Router();
 router.get("/All", (req, res) => {
   console.log("we're just gonna send it");
   db.Dinner.findAll({}).then((dbDinner) => {
-    res.json(dbDinner);
+    db.Movie.findAll({}).then((dbMovies) => {
+      console.log("Get", dbDinner, dbMovies);
+      res.render("favorites", { movies: dbMovies, dinner: dbDinner });
+      // res.json(dbDinner);
+    });
   });
 }); //url.whatever/dinner/All
 

@@ -1,7 +1,6 @@
 // Dependencies
-// =============================================================
+// =================================
 const router = require("express").Router();
-const db = require("../../models");
 
 // Routes
 // =============================================================
@@ -23,7 +22,7 @@ router.get("/homepage", (req, res) => {
 });
 // favorites route loads favorites.html
 
-router.get("/favorites", (req, res) => {
+router.get("/All", (req, res) => {
   res.render("favorites");
 });
 

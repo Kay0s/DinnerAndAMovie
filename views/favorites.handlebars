@@ -5,17 +5,33 @@
   <br>
 
   <div class="row">
-    <div class="col-lg-12 bg-warning text-center">
+    <div class="col-lg-6 bg-warning text-center">
       <h3>Previous Movies</h3>
       <div>
         {{!-- <ul> --}}
           <h3>here's where the movies go</h3>
           {{#each movies}}
           {{> movies/favorite-block}}
+          <button class=" submit delete-favorite " id="delete-favorite">Delete</button>
           {{/each}}
       </div>
 
       <button class=" submit delete-favorite ">Delete</button>
+
+
+    </div>
+    <div class="col-lg-6 bg-warning text-center">
+      <h3>Previous Dinner</h3>
+      <div>
+        {{!-- <ul> --}}
+          <h3>here's where the dinner go</h3>
+          {{#each dinner}}
+          {{> movies/dinner}}
+          <button class=" submit delete-favorite ">Delete</button>
+          {{/each}}
+      </div>
+
+
 
     </div>
   </div>
