@@ -3,7 +3,6 @@
 const router = require("express").Router();
 const db = require("../../models/");
 
-
 // Routes
 // =============================================================
 
@@ -27,7 +26,6 @@ router.get("/homepage", (req, res) => {
 router.get("/test", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "..", "/public/test.html"));
 });
-
 
 // favorites route loads favorites.html
 router.get("/favorites", (req, res) => {
