@@ -23,8 +23,9 @@ router.use("/api/dinner", require("./apiRoutes/dinner-routes"));
 router.get("/", (req, res) => {
   res.render("index");
 });
+
 router.get("/homepage", (req, res) => {
-  res.render("homepage")
+  res.render("homepage");
 });
 // favorites route loads favorites.html
 router.get("/favorites", (req, res) => {

@@ -40,7 +40,7 @@ An App that lets users search for movies which then generates a meal option to m
 With this app your able to search a movie and it will automatically pick a meal to match, including the recipe to that meal!
 
 
-## :terminal: Installation
+##  Installation
 1. Create a folder which will contain our app and within it type the following command to create the JSON file containing all the information and dependencies:
 2. Use the command-line, ```npm i```, to ```install Express, Express-Handlebars, and mysql npm````.
 3. Now we create our main js file which will contain our application's logic and name it ```"index.js"```
@@ -104,7 +104,7 @@ database is accessed.
 - [Deplo ying with MySQL- Heroku](https://devcenter.heroku.com/articles/jawsdb)
 
 
-## :raised_hands: Contributors  octocat: Profiles
+## :raised_hands: Contributors  :octocat: Profiles
 - [Alice GitHub Profile](https://github.com/adpir)
 - [Darron GitHub Profile](https://github.com/DaronSchmit)
 - [Kristina GitHub Profile](https://github.com/Kay0s)
