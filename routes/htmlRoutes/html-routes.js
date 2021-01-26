@@ -1,6 +1,8 @@
 // Dependencies
 // =================================
 const router = require("express").Router();
+const db = require("../../models/");
+
 
 // Routes
 // =============================================================
@@ -22,26 +24,20 @@ router.get("/homepage", (req, res) => {
 });
 // favorites route loads favorites.html
 
-router.get("/All", (req, res) => {
-  res.render("favorites");
-});
-
 router.get("/test", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "..", "/public/test.html"));
 });
 
-router.get("/favorites", (req, res) => {
-  res.render("favorites");
-});
 
 // favorites route loads favorites.html
 router.get("/favorites", (req, res) => {
-  db.Movie.findAll({
-    include: [db.Dinner],
-  }).then((dbMovie) => {
-    favesObj = { movies: dbMovie };
-    console.log("favorites just happened", favesObj);
-    res.render("favorites", favesObj);
-  }); //url.whatever/api/movie/All
+  console.log("we're just gonna send it");
+  db.Dinner.findAll({}).then((dbDinner) => {
+    db.Movie.findAll({}).then((dbMovies) => {
+      console.log("Get", dbDinner, dbMovies);
+      res.render("favorites", { movies: dbMovies, dinner: dbDinner });
+      // res.json(dbDinner);
+    });
+  });
 });
 module.exports = router;
