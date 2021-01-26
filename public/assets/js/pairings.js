@@ -28,7 +28,7 @@ function searchMovieGetMeal(title) {
 function renderMovieAndDinner(movie, dinner) {
   $("#like-button").data({
     movieTitle: movie.Title,
-    dinnerName: dinner.strMeal
+    dinnerName: dinner.strMeal,
   });
 
   $("#poster").attr("src", movie.Poster);
@@ -122,11 +122,10 @@ function likeButton(movieTitle, dinnerName) {
             likes: 1,
             MovieId: response1.data.id,
           },
-        })
-          .then((response2) => {
-            console.log("posted dinner to movie", response.data);
-            return response2;
-          });
+        }).then((response2) => {
+          console.log("posted dinner to movie", response.data);
+          return response2;
+        });
       });
     } else {
       //else if there is a movie, check for matching dinners

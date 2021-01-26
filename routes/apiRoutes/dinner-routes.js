@@ -3,7 +3,7 @@ const router = require("express").Router();
 
 router.get("/All", (req, res) => {
   db.Dinner.findAll({
-  include: [db.Movie]
+    include: [db.Movie],
   }).then((dbDinner) => {
     res.json(dbDinner);
   });
