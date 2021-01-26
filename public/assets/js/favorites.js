@@ -1,17 +1,17 @@
-//Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(() => {
-  $.get("/api/dinner/All", (resp) => {
-    console.log("All", resp);
-    renderMovie(resp.movie);
-    renderDinner(resp.dinner);
-  });
-  function renderMovie(movie) {
-    $("#movieInfo").append(`<p>${movie.Title}</p>`);
-  }
-  function renderDinner(dinner) {
-    $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
-  }
-});
+// //Make sure we wait to attach our handlers until the DOM is fully loaded.
+// $(() => {
+//   $.get("/api/dinner/All", (resp) => {
+//     console.log("All", resp);
+//     renderMovie(resp.movie);
+//     renderDinner(resp.dinner);
+//   });
+//   function renderMovie(movie) {
+//     $("#movieInfo").append(`<p>${movie.Title}</p>`);
+//   }
+//   function renderDinner(dinner) {
+//     $("#dinnerInfo").append(`<p>${dinner.strMeal}</p>`);
+//   }
+// });
 // $(".delete-favorite").on("click", function (event) {
 //   const id = $(this).data("id");
 //   console.log(id, event);
