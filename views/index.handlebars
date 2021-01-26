@@ -1,34 +1,34 @@
-  
-          <img
+
+<nav id="nav" class="navbar fixed-top navbar " data-spy="affix">
+    <div class="container"> 
+  <div class="col-lg-12 bg-warning text-center">
+    <h3>Enter Your Favorite Movie</h3>
+<div class="movie-title">
+   <input type="text" class="col-md-2" id="movietitle" name="name">
+     </div> 
+ <button class= "btn btn-light " id="search">Search</button>
+  </div> 
+  </div>  
+</nav>
+    <img
             src="../assets/image/film2.png"
             class="d-block w-100"
             alt="..."
           />
       
-<div class = "container" id="row2"> 
-  <div class="row" >
-    <div class="col-lg-12 bg-warning text-center">
-      <h3>Enter Your Favorite Movie</h3>
-
-      <div class="movie-title">
-        <input type="text" class="col-md-2" id="movietitle" name="name">
-      </div>
-
-      <button id="search">Search</button>
-      {{!-- <button id="doStuff">doStuff</button> --}}
-    </div>
-  </div>
+<div class = "container" > 
   <div class="row">
     <div class="col-md-4">
-      <h2 id="movie-header">Movie</h2>
+      <h2 id="dinner-header">Dinner</h2>
     </div>
     <div class="col-md-4">
       <h2>And</h2>
     </div>
     <div class="col-md-4">
-      <h2 id="dinner-header">Dinner</h2>
-      <a class="btn btn-light" href="/favorites">History Page</a>
-      <a class="btn btn-light" id="like-button">Like</a>
+      <h2 id="movie-header"> A Movie</h2>
+      <button id="like-button"><i class="fa fa-heart"></i></button>
+       <a class="btn btn-primary js-scroll-trigger" href="/favorites">History</a>
+      <a class="btn btn-primary js-scroll-trigger" href="/homepage">Home Page</a> 
     </div>
 
   </div>
@@ -68,3 +68,4 @@
 </div>
 
 
+ 
