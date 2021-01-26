@@ -95,6 +95,8 @@ The liked pairings are are viewable on a history page the is rendered using hand
 
 ## Research
 
+
+- [Photo Credit - geralt](https://pixabay.com/images/id-2643100/)
 - [Sequelize CLI](https://sequelize.org/master/manual/migrations.html)
 - [TheMealDB](https://www.themealdb.com)
 - [OMDb API](http://www.omdbapi.com)
