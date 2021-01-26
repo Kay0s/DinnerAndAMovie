@@ -1,5 +1,5 @@
 //Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(function(){
+$(document).ready(() => {
   $.get("/api/dinner/All", (resp) => {
     console.log("All",resp);
     renderMovie(resp.movie);
@@ -26,43 +26,20 @@ $(function(){
 
 //RenderMovieAndDinners
 
-
-$("#delete-favorite").on("click", function(event) {
+// 
+$(".delete").on("click", function(event) {
   let id = $(this).data("id");
 
   // Send the DELETE request.
-  $.ajax("/api/dinner/" + id, {
+  $.ajax("movies/dinner", {
     type: "DELETE"
   }).then(
     function() {
-      console.log("deleted dinner", id);
+      console.log("deleted movie", id);
       // Reload the page to get the updated list
-      location.reload();
+      
     }
   );
 });
-});
-//  $("#delete-favorite").on("click", function (event) {
-//    const id = $(this).data("id");
-//  console.log("hello");
-//     console.log(id, event);
-//     //Send the DELETE request.
-//    $.delete("/bytitle/:title", (req, res) => {
-//      //findall where title=req.params.title
-//      //attributes:id
-//      db.Movie.findOne({
-//        where: {
-//          title: req.params.title,
-//        },
-//        attributes: ["id"],
-//      }).then((dbMovieID) => {
-//        db.Movie.destroy({
-//          where: {
-//            id: dbMovieID.id,
-//          },
-//        }).then((dbMovie) => {
-//          res.json(dbMovie);
-//        });
-//      });
-//    });
-//  });
+  });
+

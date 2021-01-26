@@ -1,3 +1,4 @@
+
 $("#search").on("click", function () {
   searchMovieGetMeal($("#movietitle").val());
 });
@@ -117,8 +118,8 @@ function likeButton(movieTitle, dinnerName) {
         .then(response2 => {
           console.log("posted dinner to movie", response.data);
           return response2;
-        }).then((window.location.href="/api/dinner/All"))
-      })
+        }).then((window.location.href="/api/dinner/All"));
+      });
     }
     else{
       //else if there is a movie, check for matching dinners
@@ -168,7 +169,10 @@ function likeButton(movieTitle, dinnerName) {
       }
 
     }
+    
   })
+  
 
 };
+
 
