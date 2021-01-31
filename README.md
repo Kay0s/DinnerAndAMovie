@@ -23,7 +23,8 @@
 
 ## Overview
 
-An App that lets users search for movies which then generates a meal option to match.
+An app that uses TheMealDB API to generate meal recommendations based on user's inputed movie, that then also gathers data about the movie from the OMDb API.
+
 ## Table of Contents
 - [Description](#description)
 - [Installation](#installation)
