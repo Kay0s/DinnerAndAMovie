@@ -40,6 +40,18 @@ An app that uses TheMealDB API to generate meal recommendations based on user's 
 
 With this app your able to search a movie and it will automatically pick a meal to match, including the recipe to that meal!
 
+## User's Needs/Expectations
+
+The user, a movie and food enthusiast, wants to a meal recommendation based on the movie input in order to make a quick decision in a fun experience. The app must also allow the user to "like" their searched movie and dinner. The liked pairings are required to viewable on a history page the is rendered using handlebars and is retrieving data from the Sequelized MySQL database.
+
+- The movie and dinner recommendation application must allow the user to search for the movie info by their
+  name.
+- The meal recommendation must load on search of a movie title and present the name of the meal recommendation, image and recipe of the meal.
+- The app will be served by Heroku and feature dynamically updated HTML, CSS and Handlebars powered by JQuery.
+- Axios calls to the OMDb API is used to retrieve data for movies and TheMealDB API is employed to generate meal recommendations.
+- The user's searched movie and dinner recommendation can be "liked" which saves the data to the movie and dinner tables. Then the liked parings
+  will be retrived from the tabales using a join on the dinnerId and rendered to the history page with handlebars.
+
 
 ##  Installation
 1. Create a folder which will contain our app and within it type the following command to create the JSON file containing all the information and dependencies:
@@ -64,8 +76,23 @@ With this app your able to search a movie and it will automatically pick a meal 
 Test the different HTML pages/positions on the local host using Postman, to ensure that the data is saving and the MySQL
 database is accessed.
 
-
 ## :clapper: Deployed
+
+Overall Deployment of Dinner and a Movie
+
+On load of page: a search input and search button are present to enter a movie name in order to obtain its information using an Axios call to the OMDb API.
+
+When the user inputs the movie name into the text box and clicks the search button, event listeners and functions are triggered for:
+
+The movie name inputed into the text box.
+A first Axios call is made to the OMDb API to obtain the movie poster and descritption.
+The last Axios call is made to TheMealDB using the first leter of the movie title from the first call to obtain a meal recommendation.
+
+Math.floor(Math.random()) is used with the first letter of the response from the OMDb API passed to the TheMealDB to create a randomized meal recommendation.
+
+When the user clicks the like button for the retrieved movie and meal, then the movie is saved to the movie database and the dinner is saved to the dinner database.
+
+The liked pairings are are viewable on a history page the is rendered using handlebars and is retrieving data from the Sequelized MySQL database by joining the tables on the movieId.
 
 - \*[Deployed website](https://mysterious-retreat-01401.herokuapp.com)
 - \*[Portfolio](https://github.com/DaronSchmit/DinnerAndAMovie)
